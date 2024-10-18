@@ -11,6 +11,25 @@
 .navbar-nav .nav-link:hover {
     color: orange !important;
 }
+.navbar {
+    padding: 10px 20px; /* Adjust navbar padding if needed */
+}
+
+.vertical-line {
+    width: 1px; /* Width of the vertical line */
+    height: 30px; /* Height of the vertical line */
+    background-color: #ddd; /* Color of the vertical line */
+    margin: 0 15px; /* Spacing around the line */
+    align-self: center; /* Center the line vertically */
+}
+
+.phone-number {
+    display: flex; /* Align icon and text */
+    align-items: center; /* Center the icon and text vertically */
+}
+.custom-dropdown {
+    margin-left: 20px; /* Adjust spacing for dropdown if necessary */
+}
 
 /* Styles for phone icon */
 .phone-icon {
@@ -88,10 +107,21 @@
     }
 
     .phone-number {
-        margin-top: 10px; 
+        display: flex; /* Flex to align icon and text */
+        align-items: center; /* Center the icon and text vertically */
     }
+
+    .phone-number i {
+        margin-right: 5px; /* Spacing between icon and number */
+    }
+
+    /* Style the dropdown to make sure it looks good */
+    .dropdown-menu {
+        text-align: left; /* Align text to the left */
+    }
+    
     .contact-form {
         display: none; 
     }
-
 }
+
