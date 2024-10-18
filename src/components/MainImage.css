@@ -1,0 +1,36 @@
+.main-image-container {
+    position: relative;
+    width: 100%;
+    height: auto; /* Adjust height based on image */
+    min-height: 100vh; /* Ensure full height on large screens */
+    background-image: url('../assets/mainImg.png');
+    background-size: contain;
+    background-repeat: repeat;
+  }
+  
+  .main-image {
+    display: none; /* Hide the image as we're using it as a background */
+  }
+  
+  .contact-form {
+    position: absolute;
+    top: 60px; 
+    right: 20px;
+    width: 400px;
+    height: 550px; 
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: auto; 
+  }
+
+  .mainformbtn{
+    width: 100%;
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }

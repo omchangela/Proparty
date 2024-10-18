@@ -1,0 +1,74 @@
+.construction-packages-container {
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.packages-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.package-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    color: #ffffff;
+}
+
+.price {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.accordion-item {
+    margin-top: 10px;
+}
+
+.packagesbtn {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.packagesbtn:hover {
+    background-color: #002fff;
+    color: rgb(255, 255, 255);
+}
+
+/* Style for Explore More Packages button */
+.explore-more {
+    color: blue;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .package-item {
+        width: 100%; /* Take full width on mobile */
+    }
+
+    .packages-grid {
+        flex-direction: column; /* Stack packages vertically on mobile */
+    }
+    
+    .package-item img {
+        width: 100%; /* Make the image responsive */
+        height: auto; /* Maintain aspect ratio */
+        max-width: none; /* Optional: remove any max width */
+        object-fit: cover; /* Ensure the image covers its container */
+        background-repeat: no-repeat;
+    }
+}
