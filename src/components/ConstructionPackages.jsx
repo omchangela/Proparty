@@ -77,7 +77,8 @@ const ConstructionPackages = () => {
     <Container fluid className="construction-packages-container" id='packages'>
       <h2>Home Construction Packages</h2>
       <Row className="packages-grid">
-        {packages.slice(0, showAllPackages ? packages.length : 1).map((pkg, index) => (
+        {/* Show all packages on tablet and larger, one on mobile */}
+        {packages.slice(0, showAllPackages || window.innerWidth >= 768 ? packages.length : 1).map((pkg, index) => (
           <Col md={4} key={index} className="package-item">
             <div style={{ backgroundColor: '#0059ff', borderRadius: '10px', padding: '10px 20px' }}>
               <h3>{pkg.title}</h3>
@@ -103,8 +104,8 @@ const ConstructionPackages = () => {
         ))}
       </Row>
 
-      {/* Explore More Packages button */}
-      {!showAllPackages && (
+      {/* Show Explore More Packages button only on mobile */}
+      {!showAllPackages && window.innerWidth < 768 && (
         <Button
           variant="link"
           className="explore-more"
