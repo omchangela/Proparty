@@ -9,10 +9,10 @@
 
 /* Change link color on hover */
 .navbar-nav .nav-link:hover {
-    color: orange !important;
+    color: rgb(7, 101, 241) !important;
 }
 .navbar {
-    padding: 10px 20px; /* Adjust navbar padding if needed */
+    padding: 0 20px; /* Adjust navbar padding if needed */
 }
 
 .vertical-line {

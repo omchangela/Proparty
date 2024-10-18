@@ -1,14 +1,14 @@
 import React from 'react';
 import { Navbar, Nav, Container, Button, Dropdown } from 'react-bootstrap';
-import Logo from '../assets/MAKEMYBUILD1.png'; // Assuming the logo is this file
-import './CustomNavbar.css'; // Import the CSS file for dropdown hover effect
+import Logo from '../assets/logo.svg'; // Assuming the logo is this file
+import './CustomNavbar.css'; // Import the CSS file for styling
 
 const CustomNavbar = () => {
     return (
-        <Navbar bg="light" variant="light" expand="lg">
+        <Navbar expand="lg">
             <Container>
                 {/* Logo section */}
-                <Navbar.Brand href="#">
+                <Navbar.Brand href="/">
                     <img
                         src={Logo}
                         alt="logo"
@@ -22,20 +22,18 @@ const CustomNavbar = () => {
                 {/* Links section */}
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto"> {/* Aligns nav to the right */}
-                        <Nav.Link href="#projects">Our Projects</Nav.Link>
-                        <Nav.Link href="#floorplans">Floor Plans</Nav.Link>
-                        <Nav.Link href="#costestimator">Cost Estimator</Nav.Link>
-                        <Nav.Link href="#howitworks">How it Works</Nav.Link>
-
-                        {/* Dropdown for More */}
-                        <Dropdown className="custom-dropdown">
-                            <Dropdown.Toggle variant="light" id="dropdown-basic">
+                        <Nav.Link href="#project">Our Projects</Nav.Link>
+                        <Nav.Link href="#services">Services</Nav.Link>
+                        <Nav.Link href="/about">About Us</Nav.Link>
+                        <Nav.Link href="/banner">Banners</Nav.Link>
+                        <Dropdown as={Nav.Item} className="custom-dropdown">
+                            <Dropdown.Toggle as={Nav.Link} className="custom-nav-link">
                                 More
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item href="#aboutus">About Us</Dropdown.Item>
-                                <Dropdown.Item href="#services">Services</Dropdown.Item>
-                                <Dropdown.Item href="#contact">Contact</Dropdown.Item>
+                                <Dropdown.Item href="">Services</Dropdown.Item>
+                                <Dropdown.Item href="/contact">Contact</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
 

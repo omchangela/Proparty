@@ -1,0 +1,17 @@
+.footer-link:hover {
+    color: #ffcc00; /* Change to your desired hover color */
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  .footer-icon {
+    transition: transform 0.3s ease; /* Smooth icon hover effect */
+  }
+  
+  .footer-icon:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+  }
+  
+  .footer {
+    background: linear-gradient(to right, #4a54f1, #5d8dff); /* Gradient background */
+  }
+  
