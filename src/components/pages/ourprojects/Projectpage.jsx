@@ -118,21 +118,21 @@ const ProjectPage = () => {
 
   return (
     <>
-      <div className="projects-container" id="project">
+      <div className="projectpage-container" id="projectpage">
         <h2 style={{color: '#ff5e13'}}>
           Our Projects
           <div className="underline bg-light"></div> {/* Stylish underline */}
         </h2>
         <p>Take a look at some of the projects we've successfully completed.</p>
-        <div className="project-list">
+        <div className="projectpage-list">
           {projects.map((project) => (
             <div 
               key={project.id} 
-              className="project-item" 
+              className="projectpage-item" 
               onClick={() => handleProjectClick(project.id)} // Add click handler
               style={{ cursor: 'pointer' }} // Change cursor on hover
             >
-              <img src={project.image} alt={project.title} className="project-image" />
+              <img src={project.image} alt={project.title} className="projectpage-image" />
               <h3>{project.title}</h3>
               <p>{project.description}</p>
             </div>
@@ -152,36 +152,31 @@ const ProjectPage = () => {
           </div>
         </div>
       </div>
-      <div className="container-fluid d-flex">
-      
-  <div className="col-6 text-center">
-  <div
-        className="relative z-0 flex-wrap min-h-screen gap-2 md:-mt-10 flex-center-center"
+      <div className="container-fluid">
+  <div className="row d-flex align-items-center">
+    {/* Left Column: Text Section */}
+    <div className="col-12 col-md-6 text-center p-4">
+      <div
+        className="relative z-0 flex-wrap"
         style={{
-          backgroundImage: `url(${bgstyle})`, // Correct syntax for background image
+          backgroundImage: `url(${bgstyle})`, 
           backgroundRepeat: "no-repeat",
           backgroundSize: "contain",
         }}
       >
-    <h1 className='text-center'>We construct your dream home.
-    </h1>
-    <p className='mt-5'>Track house construction project progress, raise queries, view inspection reports and more.
+        <h1 className="text-center">We construct your dream home.</h1>
+        <p className="mt-3">Track house construction project progress, raise queries, view inspection reports and more.</p>
+        <p>View packages, floor plans, design recommendations. Capture house construction progress in 3D <br /> Realtime tracking until project completion</p>
+      </div>
+    </div>
 
-</p>
-<p>
-View packages, floor plans, design recommendations
-Capture house construction progress in 3D <br />
-
-Realtime tracking until project completion</p>
-  </div>
-
-  </div>
-  <div className="col-6">
-
-    <img src={Project5Image} alt="" style={{width: '500px'}} srcset="" />
-    
+    {/* Right Column: Image Section */}
+    <div className="col-12 col-md-6 text-center">
+      <img src={Project5Image} alt="Construction Project" className="img-fluid" />
+    </div>
   </div>
 </div>
+
       {/* Contact Form Section */}
       <div className="contact-form-container mt-5 mb-5">
   <h3>Contact Us</h3>
