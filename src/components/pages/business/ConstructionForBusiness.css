@@ -1,0 +1,100 @@
+.construction-for-business-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .banner-image {
+    margin-bottom: 20px;
+    position: relative; /* Ensure the text is positioned relative to this div */
+  }
+  
+  .banner-text {
+    position: absolute; /* Position the text absolutely within the banner */
+    top: 20%; /* Adjust as needed */
+    left: 20px; /* Adjust as needed */
+    color: white; /* Text color */
+    padding: 10px; /* Padding around text */
+    border-radius: 5px;
+  }
+  
+  h2 {
+    margin-top: 20px;
+    font-size: 3em;
+    color: #ffffff;
+    font-weight: 500;
+    font-family: Rufina;
+
+  }
+  .business-service-details {
+    margin: 20px 0; /* Space above and below the section */
+    padding: 20px; /* Optional: Add padding */
+    border-radius: 8px; /* Rounded corners */
+  }
+  
+  .business-service-details h3 {
+    margin-bottom: 15px; /* Space below the heading */
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .flex-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Display list items in a row */
+    flex-wrap: wrap; /* Allow items to wrap if needed */
+    justify-content: space-around; /* Distribute space evenly */
+  }
+  
+  .business-service-details li {
+    margin: 0 10px; /* Space between list items */
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .business-service-details .icon {
+    color: #ff5e13; /* Icon color */
+    margin-right: 5px; /* Space between icon and text */
+    font-size: 1.5em; /* Size of the icon */
+  }
+  
+  .description {
+    font-size: 16px;
+    font-weight: 200;
+    color: #fff;
+    width: 65%;}
+    .why-make-my-build-container {
+      text-align: center;
+      margin: 40px 0; /* Add margin for spacing */
+    }
+    
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap; /* Allow cards to wrap */
+      justify-content: center; /* Center cards horizontally */
+      gap: 20px; /* Space between cards */
+      max-width: 1200px; /* Limit the width for better alignment */
+      margin: 0 auto; /* Center the container */
+    }
+    
+    .card {
+      background-color: white; /* Card background color */
+      border: 1px solid #ddd; /* Card border */
+      border-radius: 8px; /* Rounded corners */
+      padding: 20px; /* Padding inside card */
+      width: 300px; /* Card width */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+      text-align: left; /* Align text to the left */
+      position: relative; /* Position for icon */
+    }
+    
+    .card-icon {
+      
+      font-size: 24px; /* Size of the icon */
+      color: #ff5e13; /* Change to your preferred color */
+      margin-bottom: 10px; /* Space between icon and text */
+    }
+     
+    .card h4 {
+      margin-bottom: 10px; /* Space between title and content */
+    }
+    

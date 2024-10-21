@@ -1,0 +1,53 @@
+.testimonials-section {
+    margin-top: 40px; /* Space above the testimonials section */
+    padding: 20px; /* Padding around the testimonials section */
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  }
+  
+  .testimonials-section h3 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .testimonials-list {
+    display: flex; /* Flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: space-evenly; /* Distribute space evenly */
+  }
+  
+  .testimonial-item {
+    background-color: #ff5e13; /* White background for testimonials */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside the item */
+    margin: 10px; /* Space between items */
+    width: 300px; /* Fixed width */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    text-align: center; /* Center text */
+  }
+  
+  .testimonial-item h4 {
+    margin-top: 10px; /* Space above the name */
+    color: #ffffff; /* Match brand color for names */
+  }
+  .contact-form-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto; /* Center the form */
+    max-width: 500px; /* Set a maximum width */
+    width: 100%; /* Make it responsive */
+  }
+  
+  .contact-form-container h3 {
+    margin-bottom: 15px;
+  }
+  
+  .contact-form-container .form-label {
+    font-weight: bold;
+  }
+  

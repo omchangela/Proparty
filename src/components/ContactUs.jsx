@@ -36,9 +36,9 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="contact-section py-5">
+    <section className="contact-section py-5"  style={{ backgroundColor:'white'}}>
       <div className="container">
-        <h2 className="text-center mb-4">Contact Us</h2>
+        <h2 className="text-center mb-4" style={{color:'#ff5e13'}}>Contact Us</h2>
         <div className="row">
           <div className="col-md-6 d-flex justify-content-center align-items-center">
             <img src={contactimg} alt="Contact Us" className="img-fluid rounded" />

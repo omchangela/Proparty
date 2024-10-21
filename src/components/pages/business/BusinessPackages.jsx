@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Accordion, Button, Container, Row, Col, Modal, Form } from 'react-bootstrap';
-import './ConstructionPackages.css'; // Optional: Add custom styling for this component
+import './BusinessPackages.css'; // Optional: Add custom styling for this component
 
-import bgstyle from '../assets/hero-bg-pattern.png'; // Correct background image import
-
-const ConstructionPackages = () => {
+const BusinessPackages = () => {
   const [showModal, setShowModal] = useState(false); // State to manage modal visibility
   const [formData, setFormData] = useState({
     name: '',
@@ -29,65 +27,53 @@ const ConstructionPackages = () => {
 
   const packages = [
     {
-      title: 'Basic Package',
-      price: '₹1,810/sq.ft (Incl. GST)',
+      title: 'Startup Package',
+      price: '₹1,800/sq.ft (Incl. GST)',
       features: [
-        'Designs & Drawings',
-        'Structure',
-        'Kitchen',
-        'Bathroom',
-        'Doors & Windows',
-        'Painting',
+        'Site Preparation',
+        'Basic Structure',
+        'Restrooms',
+        'Electrical Wiring',
+        'Paint Finish',
         'Flooring',
-        'Electrical',
-        'Miscellaneous',
       ],
     },
     {
-      title: 'Classic Package',
-      price: '₹1,940/sq.ft (Incl. GST)',
+      title: 'Standard Package',
+      price: '₹2,000/sq.ft (Incl. GST)',
       features: [
-        'Designs & Drawings',
-        'Structure',
-        'Kitchen',
-        'Bathroom',
-        'Doors & Windows',
-        'Painting',
+        'Site Preparation',
+        'Full Structure',
+        'Restrooms',
+        'Electrical Wiring',
+        'Interior Finishing',
         'Flooring',
-        'Electrical',
-        'Miscellaneous',
       ],
     },
     {
-      title: 'Premium Package',
-      price: '₹2,250/sq.ft (Incl. GST)',
+      title: 'Luxury Package',
+      price: '₹2,500/sq.ft (Incl. GST)',
       features: [
-        'Designs & Drawings',
-        'Structure',
-        'Kitchen',
-        'Bathroom',
-        'Doors & Windows',
-        'Painting',
-        'Flooring',
-        'Electrical',
-        'Miscellaneous',
+        'Site Preparation',
+        'Full Structure',
+        'Restrooms',
+        'Electrical Wiring',
+        'Custom Interior Design',
+        'Premium Flooring',
       ],
     },
   ];
 
   return (
-    
-    <Container fluid className="construction-packages-container" id='packages'>
-       {/* Background with the correct syntax */}
-       
-       <h2 className="main-title">Home Construction Packages</h2>
-       <h5 className='mb-5'>Select Best Package according to your requirment</h5>
+<Container fluid className="business-packages-container-fluid" id='business-packages'>
+<h3 style={{textAlign:'center', fontWeight:'bold'}}>Business Construction Packages</h3>
+      <h5 style={{textAlign:'center'}} className='mb-5'>Select the Best Package according to your requirement</h5>
       <Row className="packages-grid">
         {/* Show all packages on tablet and larger, one on mobile */}
         {packages.slice(0, showAllPackages || window.innerWidth >= 768 ? packages.length : 1).map((pkg, index) => (
           <Col md={4} key={index} className="package-item">
-            <div style={{ backgroundColor: '#ff5e13',fontWeight:'500', borderRadius: '10px', padding: '10px 20px' }}>
-              <h2>{pkg.title}</h2>
+            <div style={{ backgroundColor: '#ff5e13', fontWeight: '500', borderRadius: '10px', padding: '10px 20px' }}>
+              <h3>{pkg.title}</h3>
               <p className="price">{pkg.price}</p>
             </div>
 
@@ -103,7 +89,7 @@ const ConstructionPackages = () => {
               ))}
             </Accordion>
 
-            <Button variant="warning" className="mt-3 packagesbtn" onClick={() => setShowModal(true)}>
+            <Button variant="light" className="mt-3 packagesbtn" onClick={() => setShowModal(true)}>
               LET'S BUILD →
             </Button>
           </Col>
@@ -175,7 +161,7 @@ const ConstructionPackages = () => {
 
             <p className="discount-text">✔️ Dussehra-BNBDSR24 applied | Upto ₹5 Lakh off</p>
 
-            <Button variant="primary" className='mainformbtn' type="submit">
+            <Button variant="primary" className='mainformbtn w-100' type="submit">
               Submit
             </Button>
           </Form>
@@ -185,4 +171,4 @@ const ConstructionPackages = () => {
   );
 };
 
-export default ConstructionPackages;
+export default BusinessPackages;

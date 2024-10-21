@@ -18,11 +18,17 @@
 
 .projects-list {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none;  /* Hide scrollbar in IE and Edge */
+}
+
+.projects-list::-webkit-scrollbar {
+  display: none;  /* Hide scrollbar in Chrome, Safari, and Opera */
 }
 
 .project-item {
+  flex: 0 0 auto; /* Prevent shrinking */
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -31,6 +37,11 @@
   width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-item:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
 .project-item img {

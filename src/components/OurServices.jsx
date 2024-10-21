@@ -33,7 +33,7 @@ const OurServices = () => {
             </a>
           </div>
           <div className="service-item">
-            <a href="" style={{ textDecoration: 'none' }}>
+            <a href="/businesspart" style={{ textDecoration: 'none' }}>
               <img src={Service2Image} alt="Construction For Business" className="service-image" />
               <h3>Construction For Business</h3>
             </a>

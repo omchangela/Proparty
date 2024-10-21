@@ -56,7 +56,7 @@ function CustomNavbar() {
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item href="#aboutus">About Us</Dropdown.Item>
-                    <Dropdown.Item href="#services">Services</Dropdown.Item>
+                    <Dropdown.Item href="/cost-estimator">Cost Estimator</Dropdown.Item>
                     <Dropdown.Item href="/contact">Contact</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>

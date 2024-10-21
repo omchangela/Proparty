@@ -1,0 +1,29 @@
+.business-packages-container-fluid {
+    padding: 40px 20px; /* Add padding for the container */
+    max-width: 1400px; /* Set a maximum width for the container */
+    margin: 0 auto; 
+  }
+  
+  .packages-grid {
+    margin-top: 20px; /* Optional: add margin to the grid */
+  }
+  
+  .package-item {
+    margin-bottom: 20px; /* Space between package items */
+  }
+  
+  .price {
+    font-size: 1.5em; /* Style for the price text */
+    font-weight: bold; /* Make price text bold */
+  }
+  
+  .explore-more {
+    display: block; /* Ensure the button is displayed */
+    margin-top: 20px; /* Space above the button */
+  }
+  
+  .discount-text {
+    color: green; /* Change color for discount text */
+    font-weight: bold; /* Make discount text bold */
+  }
+  

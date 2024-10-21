@@ -1,18 +1,19 @@
 import React, { useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
-import './OurProjects.css'; // Optional CSS file for styling
-import Project1Image from '../assets/property1.jpeg'; // Correct image import
+import { useNavigate } from 'react-router-dom';
+import './OurProjects.css'; 
+import Project1Image from '../assets/property1.jpeg'; 
 import Project2Image from '../assets/property2.jpg';
 import Project3Image from '../assets/property3.jpg';
 import Project4Image from '../assets/property4.jpg';
 import Project5Image from '../assets/property5.jpg';
 
 const OurProjects = () => {
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate(); 
+  const projectsRef = useRef(null);
 
   const projects = [
     {
-      id: 1, // Add a unique ID to each project
+      id: 1,
       title: "Residential Building",
       description: "A modern residential building with eco-friendly features.",
       image: Project1Image
@@ -34,46 +35,45 @@ const OurProjects = () => {
       title: "Residential Building",
       description: "A modern residential building with eco-friendly features.",
       image: Project4Image
-    },
-    {
-      id: 5,
-      title: "Commercial Complex",
-      description: "A state-of-the-art commercial complex with all amenities.",
-      image: Project5Image
-    },
+    }
   ];
 
-  const projectsRef = useRef(null);
-
+  // Scroll automatically and loop back
   useEffect(() => {
     const scrollInterval = setInterval(() => {
       if (projectsRef.current) {
-        projectsRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+        const scrollWidth = projectsRef.current.scrollWidth;
+        const clientWidth = projectsRef.current.clientWidth;
+        const scrollLeft = projectsRef.current.scrollLeft;
+        if (scrollLeft + clientWidth >= scrollWidth) {
+          projectsRef.current.scrollLeft = 0; // Reset to the start
+        } else {
+          projectsRef.current.scrollBy({ left: 1 });
+        }
       }
-    }, 3000); // Scroll every 3 seconds
+    }, 10); // Adjust the speed here
 
-    return () => clearInterval(scrollInterval); // Clean up the interval on component unmount
+    return () => clearInterval(scrollInterval); 
   }, []);
 
   const handleProjectClick = (id) => {
-    // Navigate to the ProjectDetails page with the project ID
     navigate(`/projects/${id}`);
   };
 
   return (
     <div className="our-projects-container" id="project">
-      <h2>
+      <h2 className="main-title">
         Our Projects
-        <div className="underline bg-light"></div> {/* Stylish underline */}
+        <div className="underline bg-light"></div>
       </h2>
       <p>Take a look at some of the projects we've successfully completed.</p>
       <div className="projects-list" ref={projectsRef}>
-        {projects.map((project) => (
-          <div 
-            key={project.id} 
-            className="project-item" 
-            onClick={() => handleProjectClick(project.id)} // Add click handler
-            style={{ cursor: 'pointer' }} // Change cursor on hover
+        {projects.concat(projects).map((project, index) => (  // Duplicate items for smooth infinite scroll
+          <div
+            key={index}
+            className="project-item"
+            onClick={() => handleProjectClick(project.id)}
+            style={{ cursor: 'pointer' }}
           >
             <img src={project.image} alt={project.title} className="project-image" />
             <h3>{project.title}</h3>
@@ -81,6 +81,7 @@ const OurProjects = () => {
           </div>
         ))}
       </div>
+      
     </div>
   );
 };
