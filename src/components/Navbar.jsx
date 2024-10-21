@@ -12,14 +12,16 @@ function CustomNavbar() {
 
   return (
     <>
-      <Navbar expand="lg" bg="white" variant="light" className="custom-navbar">
-        <Container fluid>
+      <Navbar expand="md" bg="white" variant="light">
+        <Container>
           {/* Left Section: Logo */}
-          <Navbar.Brand href="/" className="logo-container">
+          <Navbar.Brand href="/">
             <img
               src={Logo}
               alt="Logo"
-              className="logo-img"
+              style={{
+                width: '80px', // Adjust width as needed
+              }}
             />
           </Navbar.Brand>
 
@@ -29,33 +31,31 @@ function CustomNavbar() {
           {/* Navbar links, wrapped in a collapse component */}
           <Navbar.Collapse id="basic-navbar-nav">
             {/* Center Section: Navigation Links */}
-            <Nav className="ms-auto text-center" activeKey="/home">
-              <Nav.Item>
-                <Nav.Link href="/" className="custom-nav-link">
+            <Nav className="ms-auto" activeKey="/home">
+            <Nav.Item>
+            <Nav.Link href="/" className="custom-nav-link">
                   Home
                 </Nav.Link>
-              </Nav.Item>
+            </Nav.Item>
               <Nav.Item>
+              
                 <Nav.Link href="/projects" className="custom-nav-link">
                   Our Projects
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/services" className="custom-nav-link">
-                  Services
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/about" className="custom-nav-link">
-                  About Us
-                </Nav.Link>
-              </Nav.Item>
+              <Nav.Link href="/services" className="custom-nav-link">
+                Services
+              </Nav.Link>
+              <Nav.Link href="/about" className="custom-nav-link">
+                About Us
+              </Nav.Link>
               <Nav.Item>
                 <Dropdown as={Nav.Item} className="custom-dropdown">
                   <Dropdown.Toggle as={Nav.Link} className="custom-nav-link">
                     More
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
+                    <Dropdown.Item href="#aboutus">About Us</Dropdown.Item>
                     <Dropdown.Item href="/cost-estimator">Cost Estimator</Dropdown.Item>
                     <Dropdown.Item href="/contact">Contact</Dropdown.Item>
                   </Dropdown.Menu>
@@ -64,12 +64,22 @@ function CustomNavbar() {
             </Nav>
 
             {/* Right Section: Button and Phone Number */}
-            <Nav className="ms-auto align-items-center text-center">
+            <Nav className="ms-auto align-items-center">
               <Nav.Item>
                 <Button
                   className="button-85"
                   role="button"
                   onClick={handleButtonClick}
+                  style={{
+                    marginRight: '10px',
+                    padding: '12px',
+                    fontWeight: '600',
+                    backgroundColor: '#ff5e13',
+                    border: 'none',
+                    display: 'flex', // Flexbox for centering
+                    alignItems: 'center', // Vertically align items
+                    justifyContent: 'center', // Center both icon and text horizontally
+                  }}
                 >
                   Let's Build{' '}
                   <svg
