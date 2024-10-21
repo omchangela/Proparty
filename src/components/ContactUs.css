@@ -1,0 +1,59 @@
+/* ContactUs.css */
+
+.contact-section {
+    background-color: #f8f9fa; /* Light background for the contact section */
+    padding: 40px 20px;
+  }
+  
+  h2 {
+    font-weight: 600;
+    color: #ff5e13; /* Brand color */
+  }
+  
+  h4 {
+    color: #333;
+  }
+  
+  h5 {
+    margin-top: 20px;
+  }
+  
+  .form-label {
+    font-weight: 500;
+  }
+  
+  .btn-primary {
+    background-color: #ff5e13; /* Customize button color */
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e55a12; /* Darken button on hover */
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Rounded corners for image */
+  }
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Make sure it's above other content */
+  }
+  
+  .popup {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  

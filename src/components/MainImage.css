@@ -1,92 +1,21 @@
-/* Container that holds the background image */
-.main-image-container {
-  position: relative; /* To position the contact form inside */
-  width: 100%;
-  height: 80vh; /* Fixed height, adjustable as needed */
-  background-image: url('../assets/mainImg.png'); /* Your dynamic background image */
-  background-size: cover; /* Ensure the background covers the container */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* No repeat for the background */
+.main-image-section {
+  position: relative;
 }
 
-/* Styling for the contact form */
+
 .contact-form {
-  position: absolute; /* Positioned relative to .main-image-container */
-  top: 50%; /* Center the form vertically */
-  right: 10%; /* Adjust horizontal position */
-  transform: translateY(-50%); /* Center vertically using transform */
-  width: 400px; /* Fixed width for desktop */
-  height: auto; /* Automatic height based on content */
-  min-height: 450px; /* Minimum height */
-  max-height: 80vh; /* The form will adjust to screen size but not exceed 80% */
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  background-color: white;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow for depth */
-  overflow-y: auto; /* Scroll if content exceeds max height */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  z-index: 10; /* Higher z-index for better visibility */
 }
 
-/* If you have additional images to display in the container */
-.additional-image {
-  width: 100%; /* Make sure image takes full width of the container */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 70vh; /* Limit height to prevent overflow */
-  object-fit: cover; /* Ensure image covers the area */
+.contact-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
-/* Button styling */
 .mainformbtn {
   width: 100%;
-  background-color: #007bff; /* Bootstrap primary color for better visibility */
-  color: white;
-  border: none;
-  padding: 12px; /* Increased padding for better touch target */
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
-/* Button hover effect */
-.mainformbtn:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-
-/* Media Queries for responsiveness */
-
-/* Adjustments for tablets */
-@media (max-width: 992px) {
-  .contact-form {
-    width: 85%; /* Slightly adjust form width for tablets */
-    right: 7.5%; /* Center form better */
-    top: 45%; /* Position adjustment */
-    transform: translateY(-45%); /* Center vertically using transform */
-  }
-}
-
-/* Adjustments for phones */
-@media (max-width: 768px) {
-  .main-image-container {
-    height: 60vh; /* Reduce container height for smaller screens */
-  }
-  
-  .contact-form {
-    width: 90%; /* Almost full-width on mobile devices */
-    right: 5%;
-    top: 40%; /* Center the form vertically on small screens */
-    transform: translateY(-40%);
-  }
-}
-
-/* Full width on extra-small devices */
-@media (max-width: 576px) {
-  .main-image-container {
-    height: 50vh; /* Even smaller height on extra small devices */
-  }
-
-  .contact-form {
-    width: 100%; /* Full-width on extra small devices */
-    right: 0;
-    top: 30%;
-    transform: translateY(-30%);
-  }
-}

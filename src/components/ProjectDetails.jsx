@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // Import useParams to get URL params
-import Project1Image from '../assets/project1.jpeg'; // Correct image import
-import Project2Image from '../assets/project2.jpeg';
-import Project3Image from '../assets/project3.jpeg';
-import Project4Image from '../assets/project5.jpeg';
-import Project5Image from '../assets/project4.jpeg';
+import Project1Image from '../assets/property1.jpeg'; // Correct image import
+import Project2Image from '../assets/property2.jpg';
+import Project3Image from '../assets/property3.jpg';
+import Project4Image from '../assets/property4.jpg';
+import Project5Image from '../assets/property5.jpg';
 import './ProjectDetails.css'; // Optional CSS file for styling
 
 const ProjectDetails = () => {
@@ -64,11 +64,18 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div className="project-details-container">
-      <h1>{project.title}</h1>
-      <img src={project.image} alt={project.title} className="project-image" />
-      <p>{project.description}</p>
-      <p>{project.details}</p>
+    <div className="project-details-container mb-5">
+      <div className="project-header">
+        <h1>{project.title}</h1>
+        <div className="underline"></div> {/* Stylish underline */}
+      </div>
+      <div className="project-content">
+        <img src={project.image} alt={project.title} className="project-image" />
+        <div className="project-text">
+          <p className="project-description">{project.description}</p>
+          <p className="project-details">{project.details}</p>
+        </div>
+      </div>
     </div>
   );
 };

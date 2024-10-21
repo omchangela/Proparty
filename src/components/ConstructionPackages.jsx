@@ -76,11 +76,12 @@ const ConstructionPackages = () => {
   return (
     <Container fluid className="construction-packages-container" id='packages'>
       <h2>Home Construction Packages</h2>
+      <h5 className='mb-5'>Select Best Package according to your requirment</h5>
       <Row className="packages-grid">
         {/* Show all packages on tablet and larger, one on mobile */}
         {packages.slice(0, showAllPackages || window.innerWidth >= 768 ? packages.length : 1).map((pkg, index) => (
           <Col md={4} key={index} className="package-item">
-            <div style={{ backgroundColor: '#0059ff', borderRadius: '10px', padding: '10px 20px' }}>
+            <div style={{ backgroundColor: '#ff5e13',fontWeight:'500', borderRadius: '10px', padding: '10px 20px' }}>
               <h3>{pkg.title}</h3>
               <p className="price">{pkg.price}</p>
             </div>

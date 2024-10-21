@@ -1,9 +1,15 @@
 .construction-packages-container {
-    padding: 20px;
+    padding: 50px 20px;
     text-align: center;
     background-color: #f9f9f9;
-}
 
+}
+.construction-packages-container h2{
+font-size: 2.5rem;
+font-weight: 600;
+margin-bottom: 30px;
+color: #000000;
+}
 .packages-grid {
     display: flex;
     justify-content: space-around;
@@ -35,7 +41,7 @@ h3 {
 
 .packagesbtn {
     width: 100%;
-    background-color: #0059ff;
+    background-color: #ff5e13;
     color: white;
     border: none;
     padding: 10px;
@@ -44,13 +50,13 @@ h3 {
 }
 
 .packagesbtn:hover {
-    background-color: #002fff;
+    background-color: #f3601c;
     color: rgb(255, 255, 255);
 }
 
 /* Style for Explore More Packages button */
 .explore-more {
-    color: blue;
+    color: #ff5e13;
     text-decoration: underline;
 }
 

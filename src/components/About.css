@@ -1,19 +1,68 @@
-/* Hover effect for navbar links */
-.custom-nav-link {
-    color: #292929; /* Default color */
-    transition: color 0.3s ease;
-    font-weight: bold;
+.about-container {
+    background-color: #fff;
+    padding: 50px;
+    text-align: center;
   }
   
-  .custom-nav-link:hover {
-    color: #ff5e13; /* Hover color */
+  .about-title h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
   }
   
-
-
+  .about-title p {
+    font-size: 18px;
+    color: #777;
+    margin-bottom: 40px;
+  }
   
-  /* CSS */
-  .button-85 {
+  .about-content h3,
+  .core-values h3 {
+    font-size: 28px;
+    color: #ff5e13; /* Orange color matching your theme */
+    margin-bottom: 20px;
+  }
+  
+  .about-list,
+  .core-values-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .about-list li,
+  .core-values-list li {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .about-list li::before,
+  .core-values-list li::before {
+    content: '✔️'; /* Add checkmark before each list item */
+    color: #ff5e13;
+    margin-right: 10px;
+  }
+  
+  /* AboutSection.css */
+.row.mt-5 {
+    margin-top: 3rem; /* Adjust spacing as necessary */
+  }
+  
+  h2.mb-4 {
+    font-size: 2rem; /* Adjust size for the main heading */
+  }
+  
+  h3 {
+    font-size: 1.5rem; /* Adjust size for the subheadings */
+    color: #ff5e13; /* Example color for emphasis */
+  }
+  
+  p {
+    color: #6c757d; /* Secondary text color */
+  }
+  
+   /* CSS */
+   .button-85 {
     padding: 0.6em 2em;
     border: none;
     outline: none;

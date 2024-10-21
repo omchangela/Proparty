@@ -10,6 +10,7 @@ import ProjectDetails from './components/ProjectDetails'; // Ensure you import t
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import About from './components/About';
 import Footer from './components/Footer';
+import ContactUs from './components/ContactUs';
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
         <Route path="/packages" element={<ConstructionPackages />} />
         <Route path="/projects/:id" element={<ProjectDetails />} />
         <Route path="/about" element={<About/>} />
-        
+        <Route path="/contact" element={<ContactUs />} />
+
       </Routes>
       <Footer/>
     </Router>

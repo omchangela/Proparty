@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
 import './OurProjects.css'; // Optional CSS file for styling
-import Project1Image from '../assets/project1.jpeg'; // Correct image import
-import Project2Image from '../assets/project2.jpeg';
-import Project3Image from '../assets/project3.jpeg';
-import Project4Image from '../assets/project5.jpeg';
-import Project5Image from '../assets/project4.jpeg';
+import Project1Image from '../assets/property1.jpeg'; // Correct image import
+import Project2Image from '../assets/property2.jpg';
+import Project3Image from '../assets/property3.jpg';
+import Project4Image from '../assets/property4.jpg';
+import Project5Image from '../assets/property5.jpg';
 
 const OurProjects = () => {
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -61,8 +61,11 @@ const OurProjects = () => {
   };
 
   return (
-    <div className="our-projects-container"  id='project' >
-      <h2>Our Projects</h2>
+    <div className="our-projects-container" id="project">
+      <h2>
+        Our Projects
+        <div className="underline bg-light"></div> {/* Stylish underline */}
+      </h2>
       <p>Take a look at some of the projects we've successfully completed.</p>
       <div className="projects-list" ref={projectsRef}>
         {projects.map((project) => (

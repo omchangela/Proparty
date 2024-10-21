@@ -1,18 +1,19 @@
 .our-projects-container {
   text-align: center;
   padding: 50px 20px;
-  background-color: #f0f0f0;
+  background-color: #ff5e13;
 }
 
 .our-projects-container h2 {
   font-size: 2.5rem;
+  font-weight: 600;
   margin-bottom: 30px;
-  color: #333;
+  color: #ffffff;
 }
 
 .our-projects-container p {
   font-size: 1.2rem;
-  color: #666;
+  color: #f8ecec;
 }
 
 .projects-list {
@@ -41,7 +42,7 @@
 
 .project-item h3 {
   font-size: 1.5rem;
-  color: #007bff;
+  color: #ff5e13;
 }
 
 .project-item p {

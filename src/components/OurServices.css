@@ -6,8 +6,9 @@
   
   .our-services-container h2 {
     font-size: 2.5rem;
+    font-weight: 600;
     margin-bottom: 30px;
-    color: #333;
+    color: #000000;
   }
   
   .our-services-container p {
@@ -40,10 +41,19 @@
   
   .service-item h3 {
     font-size: 1.5rem;
-    color: #007bff;
+    font-weight: 500;
+    color: #ff5e13;
   }
   
   .service-item p {
     color: #666;
+  }
+  
+  .underline {
+    width: 150px;
+    height: 4px;
+    background-color: #ff5e13;
+    margin: 10px auto;
+    border-radius: 2px;
   }
   
