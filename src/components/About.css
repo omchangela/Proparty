@@ -128,3 +128,71 @@
     top: 0;
     border-radius: 10px;
   }
+  .testimonial-card {
+    background-color: #f8f9fa; /* Light background for cards */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 8px; /* Rounded corners */
+  }
+  /* About.css */
+
+/* General Styles */
+body {
+  background-color: #f8f9fa; /* Light background color for the page */
+}
+
+h2, h5 {
+  color: #ff5e13; /* Primary color for headings */
+}
+
+.text-secondary {
+  color: #6c757d; /* Bootstrap's secondary text color */
+}
+
+/* Image Styling */
+.img-fluid {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+}
+
+/* Testimonial Card */
+.testimonial-card {
+  background-color: #ffffff; /* White background for testimonials */
+  border: 1px solid #dee2e6; /* Light border for the card */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for the card */
+  transition: transform 0.2s; /* Animation for hover effect */
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Button Styling */
+.button-85 {
+  background-color: #ff5e13; /* Primary color for button */
+  color: white; /* Text color for button */
+  border-radius: 30px; /* Rounded corners for button */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.button-85:hover {
+  background-color: #e05e12; /* Darker shade on hover */
+}
+
+/* Section Styling */
+section {
+  padding: 60px 0; /* Top and bottom padding for sections */
+}
+
+.mt-5 {
+  margin-top: 3rem !important; /* Spacing for new sections */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.5rem; /* Smaller font size for smaller screens */
+  }
+
+  .text-secondary {
+    font-size: 0.9rem; /* Smaller font size for secondary text */
+  }
+}

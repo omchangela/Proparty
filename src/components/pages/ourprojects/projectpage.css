@@ -1,53 +1,138 @@
+
+.projects-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping */
+  justify-content: center; /* Center items horizontally */
+  margin-top: 20px; /* Space above the project list */
+}
+
+.project-item {
+  width: calc(33.33% - 20px); /* Set width for three items per row with margin */
+  margin: 10px; /* Space between items */
+  border: 1px solid #ccc; /* Optional: Add border for better visibility */
+  padding: 15px; /* Add padding */
+  border-radius: 5px; /* Optional: Rounded corners */
+  text-align: center; /* Center text */
+}
+
+.project-image {
+  width: 100%; /* Make images responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+
 .testimonials-section {
-    margin-top: 40px; /* Space above the testimonials section */
-    padding: 20px; /* Padding around the testimonials section */
-    background-color: #f9f9f9; /* Light background for contrast */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-  }
+  margin-top: 40px; /* Space above testimonials section */
+  padding: 20px; /* Padding inside the section */
+  text-align: center; /* Center align text */
+}
+
+.testimonials-section h3 {
+  color: #ff5e13; /* Title color */
+  font-size: 24px; /* Adjust font size */
+  margin-bottom: 20px; /* Space below title */
+  font-weight: bold;
+}
+
+.testimonials-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: row; /* Stack testimonials vertically */
+  align-items: center; /* Center testimonials */
+  gap: 20px; /* Space between testimonials */
+}
+
+.testimonial-item {
+  background-color: #fff; /* White background for testimonial items */
+  border-radius: 5px; /* Rounded corners */
+  padding: 15px 20px; /* Padding for items */
+  width: 80%; /* Width of testimonial items */
+  max-width: 600px; /* Max width for larger screens */
+  border-left: 5px solid #ff5e13; /* Left border for emphasis */
+  position: relative; /* Relative position for pseudo-elements */
+}
+
+.testimonial-item::before {
+  content: ''; /* Create an empty pseudo-element */
+  position: absolute; /* Position relative to the testimonial item */
+  top: -10px; /* Move above the item */
+  left: 10px; /* Move slightly to the left */
+  width: 30px; /* Width of the pseudo-element */
+  height: 5px; /* Height of the pseudo-element */
+  background-color: #ff5e13; /* Same color as left border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.testimonial-item p {
+  font-style: italic; /* Italicize feedback text */
+  color: #555; /* Darker grey color for readability */
+  margin-bottom: 5px; /* Space below feedback text */
+}
+
+.testimonial-item h4 {
+  color: #333; /* Darker color for names */
+  font-weight: bold; /* Bold font for names */
+}
+.contact-form-container {
+  padding: 30px; /* Padding inside the container */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 600px; /* Max width for the form */
+  margin: 0 auto; /* Center the form */
   
-  .testimonials-section h3 {
-    text-align: center; /* Center the heading */
-    margin-bottom: 20px; /* Space below the heading */
-    font-weight: bold;
-    color: #000;
-  }
-  
-  .testimonials-list {
-    display: flex; /* Flexbox for layout */
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: space-evenly; /* Distribute space evenly */
-  }
-  
-  .testimonial-item {
-    background-color: #ff5e13; /* White background for testimonials */
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 15px; /* Padding inside the item */
-    margin: 10px; /* Space between items */
-    width: 300px; /* Fixed width */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    text-align: center; /* Center text */
-  }
-  
-  .testimonial-item h4 {
-    margin-top: 10px; /* Space above the name */
-    color: #ffffff; /* Match brand color for names */
-  }
-  .contact-form-container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px auto; /* Center the form */
-    max-width: 500px; /* Set a maximum width */
-    width: 100%; /* Make it responsive */
-  }
-  
-  .contact-form-container h3 {
-    margin-bottom: 15px;
-  }
-  
-  .contact-form-container .form-label {
-    font-weight: bold;
-  }
-  
+}
+
+.contact-form-container h3 {
+  color: #ff5e13; /* Heading color */
+  font-size: 28px; /* Adjust heading size */
+  margin-bottom: 15px; /* Space below heading */
+  text-align: center; /* Center align heading */
+}
+
+.contact-form-container p {
+  color: #555; /* Description color */
+  margin-bottom: 25px; /* Space below description */
+  text-align: center; /* Center align description */
+}
+
+.form-container {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Stack form elements vertically */
+}
+
+.form-label {
+  font-weight: bold; /* Bold label text */
+  margin-bottom: 5px; /* Space below labels */
+}
+
+.form-control {
+  padding: 10px; /* Padding for inputs */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  transition: border-color 0.3s; /* Smooth border transition */
+}
+
+.form-control:focus {
+  border-color: #ff5e13; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(255, 94, 19, 0.5); /* Shadow effect on focus */
+}
+
+.btn-primary {
+  background-color: #ff5e13; /* Button color */
+  border: none; /* Remove border */
+  padding: 10px; /* Button padding */
+  border-radius: 5px; /* Rounded corners */
+  font-weight: bold; /* Bold button text */
+}
+
+.btn-primary:hover {
+  background-color: #e65c12; /* Darken button on hover */
+  cursor: pointer; /* Change cursor on hover */
+}

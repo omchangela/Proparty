@@ -2,6 +2,7 @@ import React from 'react';
 import './About.css'; // Import a CSS file for styles if needed
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Project5Image from '../assets/property5.jpg';
+import bgstyle from '../assets/hero-bg-pattern.png'; // Correct background image import
 
 const About = () => {
   const navigate = useNavigate(); // Initialize navigate for routing
@@ -21,15 +22,12 @@ const About = () => {
           <div className="col-12 col-lg-6 col-xl-7">
             <div className="row justify-content-xl-center">
               <div className="col-12 col-xl-11">
-                <h2 className="mb-3">Who Are We?</h2>
-                <p className="lead fs-4 text-secondary mb-3">
-                  We began from a small team, but now we are a force of 100+ visionaries who believe in our mission
-
-
+                <h2 className="mb-3" style={{color:'black'}}>Who Are We?</h2>
+                <p className="lead fs-4  mb-3 " style={{color:'black'}}>
+                  We began from a small team, but now we are a force of 100+ visionaries who believe in our mission.
                 </p>
-                <p className="mb-5">
-                  It all started with an idea, that changed the way we look at construction today. We started with the aim of making the construction simple, transparent and reliable .
-
+                <p className="mb-5" style={{color:'black'}}>
+                  It all started with an idea that changed the way we look at construction today. We aim to make construction simple, transparent, and reliable.
                 </p>
                 <div className="row gy-4 gy-md-0 gx-xxl-5X">
                   <div className="col-12 col-md-6">
@@ -40,13 +38,8 @@ const About = () => {
                         </svg>
                       </div>
                       <div>
-                        <h2 className="h4 mb-3">What we focus for
-                        </h2>
-                        <p className="text-secondary mb-0">Best & Competitive Pricing
-
-                          ,Quality Assurance using our 470+ Quality Checks
-
-                        </p>
+                        <h2 className="h4 mb-3">What We Focus On</h2>
+                        <p className="text-secondary mb-0">Best & Competitive Pricing, Quality Assurance using our 470+ Quality Checks.</p>
                       </div>
                     </div>
                   </div>
@@ -59,11 +52,7 @@ const About = () => {
                       </div>
                       <div>
                         <h2 className="h4 mb-3">Best Agency</h2>
-                        <p className="text-secondary mb-0">No Delays - Safety mechanisms against delays
-
-                          ,Transparent Contracts and Online monitoring
-
-                        </p>
+                        <p className="text-secondary mb-0">No Delays - Safety mechanisms against delays, Transparent Contracts and Online Monitoring.</p>
                       </div>
                     </div>
                   </div>
@@ -72,10 +61,19 @@ const About = () => {
             </div>
           </div>
         </div>
+        
         {/* New Div for Construction Service Highlights */}
         <div className="row mt-5">
+        <div
+        className="relative z-0 flex-wrap min-h-screen gap-2 md:-mt-10 flex-center-center"
+        style={{
+          backgroundImage: `url(${bgstyle})`, // Correct syntax for background image
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+        }}
+      >
           <div className="col-12 text-center">
-            <h2 className="mb-4" style={{ fontWeight: 600 }}>Hire the Best House Construction Service</h2>
+            <h2 className="mb-4" style={{ fontWeight: 600,color:'#ff5e13' }}>Hire the Best House Construction Service</h2>
             <div className="row justify-content-center">
               <div className="col-12 col-md-4 mb-3">
                 <h3>7000+</h3>
@@ -91,7 +89,7 @@ const About = () => {
               </div>
             </div>
             {/* Centered Button */}
-            <div className="d-flex justify-content-center mt-4"> {/* Flexbox for centering */}
+            <div className="d-flex justify-content-center mt-4">
               <button
                 className="button-85"
                 role="button"
@@ -100,7 +98,7 @@ const About = () => {
                   fontWeight: '600',
                   backgroundColor: '#ff5e13',
                   border: 'none',
-                  padding: '12px 24px', // Add padding for better button size
+                  padding: '12px 24px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -114,14 +112,63 @@ const About = () => {
                   fill="currentColor"
                   className="bi bi-arrow-right-circle-fill"
                   viewBox="0 0 16 16"
-                  style={{ marginLeft: '8px' }} // Add space between text and icon
+                  style={{ marginLeft: '8px' }}
                 >
                   <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
                 </svg>
               </button>
             </div>
+
+            </div>
           </div>
         </div>
+
+        {/* New Section for Testimonials */}
+        <div className="row mt-5">
+          <div className="col-12 text-center">
+            <h2 style={{color:'black'}} className="mb-4">What Our Clients Say</h2>
+            <div className="row">
+              <div className="col-12 col-md-4 mb-4">
+                <div className="testimonial-card p-3 border rounded">
+                  <p style={{color:'black'}}>"The team was exceptional! They transformed my ideas into reality."</p>
+                  <h5>- John Doe</h5>
+                </div>
+              </div>
+              <div className="col-12 col-md-4 mb-4">
+                <div className="testimonial-card p-3 border rounded">
+                  <p style={{color:'black'}}> "Quality workmanship and great communication. Highly recommend!"</p>
+                  <h5>- Jane Smith</h5>
+                </div>
+              </div>
+              <div className="col-12 col-md-4 mb-4">
+                <div className="testimonial-card p-3 border rounded">
+                  <p style={{color:'black'}}>"I was impressed with their professionalism and attention to detail."</p>
+                  <h5>- Mark Johnson</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* New Section for Mission, Vision, and Values */}
+        <div className="row mt-5">
+          <div className="col-12 text-center" >
+          <div
+        className="relative z-0 flex-wrap min-h-screen gap-2 md:-mt-10 flex-center-center"
+        style={{
+          backgroundImage: `url(${bgstyle})`, // Correct syntax for background image
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+        }}
+      >
+            <h2  style={{color:'black'}} className="mb-4">Our Mission, Vision, and Values</h2>
+            <p className="lead">Our Mission: To revolutionize the construction industry through innovative solutions and exceptional service.</p>
+            <p className="lead">Our Vision: To be the most trusted and reliable construction partner for homeowners and businesses.</p>
+            <p className="lead">Our Values: Integrity, Quality, Innovation, and Customer Satisfaction.</p>
+          </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

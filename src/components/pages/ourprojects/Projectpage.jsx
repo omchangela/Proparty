@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
 import './projectpage.css'; // Optional CSS file for styling
 import Project1Image from '../assets/property1.jpeg'; // Correct image import
@@ -6,6 +6,7 @@ import Project2Image from '../assets/property2.jpg';
 import Project3Image from '../assets/property3.jpg';
 import Project4Image from '../assets/property4.jpg';
 import Project5Image from '../assets/property5.jpg';
+import bgstyle from '../assets/hero-bg-pattern.png'; // Correct background image import
 
 const ProjectPage = () => {
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -64,13 +65,7 @@ const ProjectPage = () => {
       title: "Renovated Warehouse",
       description: "A stylish renovation of a historic warehouse.",
       image: Project4Image,
-    },
-    {
-      id: 10,
-      title: "Beachfront Villa",
-      description: "A stunning villa with breathtaking ocean views.",
-      image: Project5Image,
-    },
+    }
   ];
 
   const testimonials = [
@@ -91,23 +86,12 @@ const ProjectPage = () => {
     },
   ];
 
-  const projectsRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
     mobile: '',
     email: '',
     location: ''
   });
-
-  useEffect(() => {
-    const scrollInterval = setInterval(() => {
-      if (projectsRef.current) {
-        projectsRef.current.scrollBy({ left: 200, behavior: 'smooth' });
-      }
-    }, 3000); // Scroll every 3 seconds
-
-    return () => clearInterval(scrollInterval); // Clean up the interval on component unmount
-  }, []);
 
   const handleProjectClick = (id) => {
     // Navigate to the ProjectDetails page with the project ID
@@ -134,46 +118,75 @@ const ProjectPage = () => {
 
   return (
     <>
-    <div className="our-projects-container" id="project">
-      <h2>
-        Our Projects
-        <div className="underline bg-light"></div> {/* Stylish underline */}
-      </h2>
-      <p>Take a look at some of the projects we've successfully completed.</p>
-      <div className="projects-list" ref={projectsRef}>
-        {projects.map((project) => (
-          <div 
-            key={project.id} 
-            className="project-item" 
-            onClick={() => handleProjectClick(project.id)} // Add click handler
-            style={{ cursor: 'pointer' }} // Change cursor on hover
-          >
-            <img src={project.image} alt={project.title} className="project-image" />
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Testimonials Section */}
-      <div className="testimonials-section">
-        <h3>What Our Clients Say</h3>
-        <div className="testimonials-list">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="testimonial-item">
-              <p>"{testimonial.feedback}"</p>
-              <h4>- {testimonial.name}</h4>
+      <div className="projects-container" id="project">
+        <h2 style={{color: '#ff5e13'}}>
+          Our Projects
+          <div className="underline bg-light"></div> {/* Stylish underline */}
+        </h2>
+        <p>Take a look at some of the projects we've successfully completed.</p>
+        <div className="project-list">
+          {projects.map((project) => (
+            <div 
+              key={project.id} 
+              className="project-item" 
+              onClick={() => handleProjectClick(project.id)} // Add click handler
+              style={{ cursor: 'pointer' }} // Change cursor on hover
+            >
+              <img src={project.image} alt={project.title} className="project-image" />
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
             </div>
           ))}
         </div>
-      </div>
 
+        {/* Testimonials Section */}
+        <div className="testimonials-section">
+          <h3>What Our Clients Say</h3>
+          <div className="testimonials-list">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="testimonial-item">
+                <p>"{testimonial.feedback}"</p>
+                <h4>- {testimonial.name}</h4>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid d-flex">
       
-    </div>
-    {/* Contact Form Section */}
-    <div className="contact-form-container mt-5 ">
-    <h3>Contact Us</h3>
-    <p>If you have any inquiries or would like to discuss a project, please fill out the form below:</p>
+  <div className="col-6 text-center">
+  <div
+        className="relative z-0 flex-wrap min-h-screen gap-2 md:-mt-10 flex-center-center"
+        style={{
+          backgroundImage: `url(${bgstyle})`, // Correct syntax for background image
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+        }}
+      >
+    <h1 className='text-center'>We construct your dream home.
+    </h1>
+    <p className='mt-5'>Track house construction project progress, raise queries, view inspection reports and more.
+
+</p>
+<p>
+View packages, floor plans, design recommendations
+Capture house construction progress in 3D <br />
+
+Realtime tracking until project completion</p>
+  </div>
+
+  </div>
+  <div className="col-6">
+
+    <img src={Project5Image} alt="" style={{width: '500px'}} srcset="" />
+    
+  </div>
+</div>
+      {/* Contact Form Section */}
+      <div className="contact-form-container mt-5 mb-5">
+  <h3>Contact Us</h3>
+  <p>If you have any inquiries or would like to discuss a project, please fill out the form below:</p>
+  <div className="form-container">
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="name" className="form-label">Name*</label>
@@ -226,7 +239,9 @@ const ProjectPage = () => {
       <button type="submit" className="btn btn-primary w-100">Submit</button>
     </form>
   </div>
-  </>
+</div>
+
+    </>
   );
 };
 

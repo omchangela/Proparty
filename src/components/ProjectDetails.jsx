@@ -93,7 +93,68 @@ const ProjectDetails = () => {
       challenges: "Balancing aesthetic appeal with functional design was a key focus throughout the project.",
       clientFeedback: "The new complex has attracted many new clients. Great job!",
     },
+    {
+      id: 6,
+      title: "Luxury Apartment",
+      description: "An upscale apartment featuring luxury amenities.",
+      image: Project1Image,
+      details: "This Luxury Apartment is designed for comfort and elegance, featuring high-end finishes and spacious layouts.",
+      specifications: [
+        "Location: Urban Center",
+        "Area: 2,500 sq. ft.",
+        "Material: Premium quality fixtures and fittings",
+        "Completion Date: February 2025"
+      ],
+      challenges: "Maximizing space while ensuring luxury was a significant challenge.",
+      clientFeedback: "We love the open space and modern design. A perfect place to live!",
+    },
+    {
+      id: 7,
+      title: "Retail Center",
+      description: "A vibrant retail center with diverse shopping options.",
+      image: Project2Image,
+      details: "This Retail Center features a variety of shops and restaurants, designed to create an engaging shopping experience.",
+      specifications: [
+        "Location: Main Street",
+        "Area: 20,000 sq. ft.",
+        "Material: Glass and steel structure",
+        "Completion Date: April 2024"
+      ],
+      challenges: "Creating an inviting atmosphere while accommodating various vendors was challenging.",
+      clientFeedback: "Our sales have increased since moving here. Customers love it!",
+    },
+    {
+      id: 8,
+      title: "Community Park",
+      description: "A green space for community gatherings and events.",
+      image: Project3Image,
+      details: "This Community Park features walking trails, picnic areas, and playgrounds, promoting community engagement and outdoor activities.",
+      specifications: [
+        "Location: City Outskirts",
+        "Area: 10 acres",
+        "Material: Natural landscaping and sustainable materials",
+        "Completion Date: September 2023"
+      ],
+      challenges: "Incorporating natural elements while ensuring safety for children and families was a key focus.",
+      clientFeedback: "A wonderful addition to the community! We love spending time here.",
+    },
+    {
+      id: 9,
+      title: "Renovated Warehouse",
+      description: "A stylish renovation of a historic warehouse.",
+      image: Project4Image,
+      details: "This project transformed an old warehouse into a modern space, blending historical elements with contemporary design.",
+      specifications: [
+        "Location: Industrial District",
+        "Area: 15,000 sq. ft.",
+        "Material: Restored wood and metal accents",
+        "Completion Date: January 2023"
+      ],
+      challenges: "Maintaining the building's historical integrity while modernizing its functionality was a challenge.",
+      clientFeedback: "The transformation is amazing! We've created a unique space that attracts visitors.",
+    },
   ];
+  
 
   // Use useEffect to update the project whenever the id changes
   useEffect(() => {
