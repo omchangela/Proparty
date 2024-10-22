@@ -2,38 +2,45 @@ import React, { useState } from 'react';
 import './ContactUs.css'; // Import a CSS file for styles if needed
 import contactimg from '../assets/property5.jpg'; // Your contact image
 
+import { Form, Button } from 'react-bootstrap';
+
 const ContactUs = () => {
+  // State to handle form data
   const [formData, setFormData] = useState({
     name: '',
+    mobile: '',
     email: '',
-    message: '',
+    location: ''
   });
   const [showPopup, setShowPopup] = useState(false); // State to control popup visibility
 
+  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Show the thank-you popup
-    setShowPopup(true);
-    // Reset form after submission
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-    });
+
+    fetch('http://localhost:5050/api/form-submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => response.text())
+      .then(data => {
+        alert('Thank you! We will contact you soon.');
+        setFormData({ name: '', mobile: '', email: '', location: '' }); // Clear form after submission
+      })
+      .catch(error => {
+        console.error('Error submitting form:', error);
+      });
   };
 
-  const closePopup = () => {
-    setShowPopup(false);
-  };
 
   return (
     <section className="contact-section py-5">
@@ -44,45 +51,63 @@ const ContactUs = () => {
             <img src={contactimg} alt="Contact Us" className="img-fluid rounded" />
           </div>
           <div className="col-md-6">
-            <form onSubmit={handleSubmit} className="mt-4 mx-5">
-              <div className="mb-3">
-                <label htmlFor="name" className="form-label">Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="message" className="form-label">Message</label>
-                <textarea
-                  className="form-control"
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows="4"
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" className="btn btn-primary">Send Message</button>
-            </form>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formName" className="mb-3">
+              <Form.Label>Name*</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formMobile" className="mb-3">
+              <Form.Label>Mobile Number*</Form.Label>
+              <Form.Control
+                type="tel"
+                name="mobile"
+                placeholder="India +91"
+                value={formData.mobile}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formEmail" className="mb-3">
+              <Form.Label>Email*</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formLocation" className="mb-3">
+              <Form.Label>Location of your Plot*</Form.Label>
+              <Form.Control
+                type="text"
+                name="location"
+                placeholder="Enter your plot location"
+                value={formData.location}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Button
+              style={{ fontWeight: '600', backgroundColor: '#ff5e13', border: 'none' }}
+              className="mainformbtn w-100"
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
           </div>
         </div>
 
@@ -109,16 +134,6 @@ const ContactUs = () => {
         </div>
       </div>
 
-      {/* Thank You Popup */}
-      {showPopup && (
-        <div className="popup-overlay">
-          <div className="popup">
-            <h4>Thank You!</h4>
-            <p>Thank you for contacting us. We will reach out to you soon.</p>
-            <button onClick={closePopup} className="btn">Close</button>
-          </div>
-        </div>
-      )}
     </section>
   );
 };

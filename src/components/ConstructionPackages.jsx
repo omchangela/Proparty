@@ -21,10 +21,31 @@ const ConstructionPackages = () => {
     });
   };
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Submitted:', formData);
-    setShowModal(false); // Close the modal after submission
+    
+    // Send form data to the backend
+    fetch('http://localhost:5050/api/form-submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Thank you! We will contact you soon.');
+        setFormData({ name: '', mobile: '', email: '', location: '' }); // Clear form after submission
+      } else {
+        alert('Failed to submit the form. Please try again later.');
+      }
+      setShowModal(false); // Close the modal after submission
+    })
+    .catch(error => {
+      console.error('Error submitting form:', error);
+      alert('An error occurred while submitting the form. Please try again later.');
+    });
   };
 
   const packages = [

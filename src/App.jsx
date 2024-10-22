@@ -4,18 +4,18 @@ import CustomNavbar from './components/Navbar';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import MainImage from './components/MainImage';
 import OurServices from './components/OurServices';
-// import OurProjects from './components/OurProjects';
 import ConstructionPackages from './components/ConstructionPackages';
-import ProjectDetails from './components/ProjectDetails'; // Ensure you import this component
+import ProjectDetails from './components/ProjectDetails';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import About from './components/About';
 import Footer from './components/Footer';
 import ContactUs from './components/ContactUs';
 import ConstructionForBusiness from './components/pages/business/ConstructionForBusiness';
-import Projectpage from './components/pages/ourprojects/Projectpage'
+import Projectpage from './components/pages/ourprojects/Projectpage';
 import CostCalculator from './components/CostCalculator';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
+import AdminPanel from './pages/AdminPanel';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -38,9 +38,28 @@ function App() {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form data submitted:', formData);
-    setShowModal(false); // Close the modal after submission
+    
+    // Send form data to the backend
+    fetch('http://localhost:5050/api/form-submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Thank you! We will contact you soon.');
+        setFormData({ name: '', mobile: '', email: '', location: '' }); // Clear form after submission
+      } else {
+        alert('Failed to submit the form. Please try again later.');
+      }
+      setShowModal(false); // Close the modal after submission
+    })
+    .catch(error => {
+      console.error('Error submitting form:', error);
+      alert('An error occurred while submitting the form. Please try again later.');
+    });
   };
 
   // Show the modal after 3 seconds
@@ -66,6 +85,7 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/businesspart" element={<ConstructionForBusiness />} />
         <Route path="/cost-estimator" element={<CostCalculator />} />
+        <Route path="/admin-panel" element={<AdminPanel />} />
       </Routes>
       <Footer />
 
