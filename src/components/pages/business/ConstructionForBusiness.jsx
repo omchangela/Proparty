@@ -25,7 +25,7 @@ const ConstructionForBusiness = () => {
       }}>
         <div className="banner-text z-15">
           <h2>Commercial Building Design & Construction Services</h2>
-          <p>Looking to build a commercial building? Brick &amp; Bolt is your trusted partner for commercial construction projects, from design to completion. We specialize in building commercial buildings, offering expertise in design, construction, and project management.</p>
+          <p>Looking to build a commercial building? We are your trusted partner for commercial construction projects, from design to completion. We specialize in building commercial buildings, offering expertise in construction </p>
         </div>
       </div>
 
