@@ -1,10 +1,12 @@
-import Carousel from 'react-bootstrap/Carousel';
+
 import { Form, Button } from 'react-bootstrap'; // Import Bootstrap Form and Button
-import mainImg from '/src/assets/mainimg.png';
+import mainImg from '/src/assets/commercial_banner.webp';
 import OurServices from './OurServices';
 import OurProjects from './OurProjects';
 import ConstructionPackages from './ConstructionPackages';
 import { useState } from 'react'; // Use state to handle form data
+import BannerImage from '../assets/commercial_banner.webp';
+
 
 function IndividualIntervalsExample() {
   // State to handle form data
@@ -35,46 +37,17 @@ function IndividualIntervalsExample() {
   return (
     <>
       <div className="carousel-container position-relative">
-        <Carousel>
-          <Carousel.Item interval={1000}>
-            <img
-              src={mainImg}
-              alt="Main Image"
-              className="d-block w-100"
-              style={{ maxHeight: '500px', objectFit: 'cover' }}
-            />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          <Carousel.Item interval={500}>
-            <img
-              src={mainImg}
-              alt="Main Image"
-              className="d-block w-100"
-              style={{ maxHeight: '500px', objectFit: 'cover' }}
-            />
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          <Carousel.Item>
-            <img
-              src={mainImg}
-              alt="Main Image"
-              className="d-block w-100"
-              style={{ maxHeight: '500px', objectFit: 'cover' }}
-            />
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
+      <div className="banner-image" style={{
+        backgroundImage: `url(${BannerImage})`,
+        height: '500px',
+        color: 'white',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative', // Set position to relative for text positioning
+      }}>
+        <div className="banner-text z-15">
+        </div>
+      </div>
 
         {/* Form Overlay - Hidden on small screens */}
         <div

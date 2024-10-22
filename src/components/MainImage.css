@@ -86,3 +86,13 @@
   top: 0;
   border-radius: 10px;
 }
+
+.carousel-image {
+  max-height: 600px;
+}
+
+@media (max-width: 768px) { /* Adjust this breakpoint as needed */
+  .carousel-image {
+    max-height: 60vh; /* Set height to 60% of the viewport height on small screens */
+  }
+}

@@ -43,7 +43,7 @@ function CustomNavbar() {
                   Our Projects
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Link href="/services" className="custom-nav-link">
+              <Nav.Link href="/businesspart" className="custom-nav-link">
                 Services
               </Nav.Link>
               <Nav.Link href="/about" className="custom-nav-link">
