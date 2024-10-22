@@ -89,9 +89,9 @@ const ContactUs = () => {
         {/* Address Section */}
         <div className="address-section mt-4">
           <h5>Our Address</h5>
-          <p>1234 Your Street, Your City, Your State, 12345</p>
-          <p>Email: info@yourcompany.com</p>
-          <p>Phone: (123) 456-7890</p>
+          <p># 6-132-1, Satyadeva Nagar. Rahamath funcation hall Lane, Ballary By-pass Road, Anantapur 515001</p>
+          <p>Email: info@makemybuild.com</p>
+          <p>Phone: +91 8886786687</p>
         </div>
 
         {/* Google Map Section */}
@@ -99,7 +99,7 @@ const ContactUs = () => {
           <h5>Location</h5>
           <iframe
             title="Google Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345099994!2d144.9537353153167!3d-37.81720997975152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0b4a8c1f%3A0x4f849f8c7ee8c38a!2sMelbourne%20CBD%2C%20Melbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1616602440240!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.8032083844305!2d77.58548618592155!3d14.667106649283506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb14bcb1c5e65e7%3A0x87ab2ac468074ec4!2sRahmath%20Function%20Hall%20for%20free!5e0!3m2!1sen!2sin!4v1729583849449!5m2!1sen!2sin"
             width="100%"
             height="250"
             style={{ border: 0 }}
