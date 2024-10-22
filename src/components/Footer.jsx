@@ -5,7 +5,7 @@ import logo from '../assets/logo.svg';
 
 export default function Footer() {
   return (
-    <MDBFooter bgColor='light' className='text-center text-lg-start text-dark'>
+    <MDBFooter className='text-center text-lg-start text-dark' style={{backgroundColor: 'white'}}>
       <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
         <div className='me-5 d-none d-lg-block'>
           <span>Get connected with us on social networks:</span>
@@ -37,19 +37,19 @@ export default function Footer() {
         <MDBContainer className='text-center text-md-start mt-5'>
           <MDBRow className='mt-3'>
             <MDBCol md='3' lg='4' xl='3' className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>
+              <h6 className='text-uppercase fw-bold '>
                 <MDBIcon icon='../assets/logo.svg' className='me-3' />
-                <img src={logo} width={120}  alt="" />
+                <img src={logo} width={140}  alt="logo" />
                 Make My Build
               </h6>
-              <p>
+              <p className='text-dark'>
                 Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               </p>
             </MDBCol>
 
-            <MDBCol md='2' lg='2' xl='2' className='mx-auto mb-4'>
+            <MDBCol md='2' lg='2' xl='2' className='mx-auto mb-4 mt-5' id='links'>
               <h6 className='text-uppercase fw-bold mb-4'>Products</h6>
-              <p>
+              <p> 
                 <a href='/' className='text-reset'>
                 How it Works
                 </a>
@@ -59,7 +59,7 @@ export default function Footer() {
                 Our Projects
                 </a>
               </p>
-              <p>
+              <p >
                 <a href='/about' className='text-reset'>
                   About Us
                 </a>
@@ -71,7 +71,7 @@ export default function Footer() {
               </p>
             </MDBCol>
 
-            <MDBCol md='3' lg='2' xl='2' className='mx-auto mb-4'>
+            <MDBCol md='3' lg='2' xl='2' className='mx-auto mb-4 mt-5' id='links'>
               <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
               <p>
                 <a href='#!' className='text-reset'>
@@ -95,21 +95,21 @@ export default function Footer() {
               </p>
             </MDBCol>
 
-            <MDBCol md='4' lg='3' xl='3' className='mx-auto mb-md-0 mb-4'>
+            <MDBCol md='4' lg='3' xl='3' className='mx-auto mb-md-0 mb-4 mt-5' id='links'>
               <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
               <p>
                 <MDBIcon icon='home' className='me-2' />
-                Gujarat, GJ 10012, India
+                # 6-132-1 Satyadeva Nagar. Rahamath funcation hall Lane, Ballary By-pass Road, Anantapur 515001
               </p>
               <p>
                 <MDBIcon icon='envelope' className='me-3' />
-                makemybuild@example.com
+                info@makemybuild.com
               </p>
               <p>
-                <MDBIcon icon='phone' className='me-3' /> + 91 234 567 88
+                <MDBIcon icon='phone' className='me-3' /> +91 8886786687
               </p>
               <p>
-                <MDBIcon icon='print' className='me-3' /> + 91 234 567 89
+                <MDBIcon icon='phone' className='me-3' /> +91 9441999968
               </p>
             </MDBCol>
           </MDBRow>

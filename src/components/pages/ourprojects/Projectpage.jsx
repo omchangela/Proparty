@@ -198,8 +198,9 @@ const ProjectPage = () => {
       <div className="mb-3">
         <label htmlFor="mobile" className="form-label">Mobile Number*</label>
         <input
-          type="tel"
+          type="number"
           name="mobile"
+          maxLength={10}
           className="form-control"
           placeholder="India +91"
           value={formData.mobile}

@@ -1,17 +1,10 @@
-.footer-link:hover {
-    color: #ffcc00; /* Change to your desired hover color */
-    text-decoration: underline; /* Underline on hover */
-  }
+#links p{
+  color: black;
+  text-decoration: none;
   
-  .footer-icon {
-    transition: transform 0.3s ease; /* Smooth icon hover effect */
-  }
+}
+#links p a{
+  color: black;
+  text-decoration: none;
   
-  .footer-icon:hover {
-    transform: scale(1.1); /* Scale effect on hover */
-  }
-  
-  .footer {
-    background: linear-gradient(to right, #4a54f1, #5d8dff); /* Gradient background */
-  }
-  
+}

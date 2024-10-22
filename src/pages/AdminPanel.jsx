@@ -8,7 +8,7 @@ function AdminPanel() {
 
   // Fetch current banner images
   useEffect(() => {
-    fetch('http://localhost:5050/api/banners')
+    fetch('https://property-backend-arqx.onrender.com/api/banners')
       .then(response => response.json())
       .then(data => setBanners(data.banners)) // Store banners in state
       .catch(error => console.error('Error fetching banners:', error));
@@ -30,7 +30,7 @@ function AdminPanel() {
     formData.append('banner', selectedFile);
     setLoading(true);
 
-    fetch('http://localhost:5050/api/upload-banner', {
+    fetch('https://property-backend-arqx.onrender.com/api/upload-banner', {
       method: 'POST',
       body: formData,
     })
@@ -50,7 +50,7 @@ function AdminPanel() {
   // Handle banner deletion
   const handleDeleteBanner = (id) => {
     setLoading(true);
-    fetch(`http://localhost:5050/api/banners/${id}`, {
+    fetch(`https://property-backend-arqx.onrender.com/api/banners/${id}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -69,14 +69,13 @@ function AdminPanel() {
   };
 
   return (
-    <div className="container mt-5 bg-dark p-4 rounded">
-      <h1 className="text-white mb-4">Admin Panel</h1>
+    <div className="container mt-5 bg-light p-4 rounded">
+      <h1 className="text-dark text-center mb-4">Admin Panel</h1>
 
       {/* Banner Image Upload */}
-      <h2 className="text-white">Update Banner Image</h2>
+      <h4 className="text-darl">Update Banner Image</h4>
       <Form onSubmit={handleImageUpload}>
         <Form.Group controlId="formBannerImage" className="mb-3">
-          <Form.Label className="text-white">Upload New Banner Image</Form.Label>
           <Form.Control type="file" onChange={handleFileChange} required />
           {selectedFile && <small className="text-white mt-2">Selected: {selectedFile.name}</small>}
         </Form.Group>
@@ -86,11 +85,11 @@ function AdminPanel() {
       </Form>
 
       {/* Displaying Banners */}
-      <h2 className="text-white mt-4">Current Banners</h2>
+      <h2 className="text-dark mt-4">Current Banners</h2>
       <div className="banner-list">
         {banners.map(banner => (
           <div key={banner._id} className="banner-item mb-3">
-            <img src={`http://localhost:5050${banner.imageUrl}`} alt="Banner" style={{ maxWidth: '100%', height: 'auto' }} />
+            <img src={`https://property-backend-arqx.onrender.com${banner.imageUrl}`} alt="Banner" style={{ maxWidth: '100%', height: 'auto' }} />
             <Button className="mt-2" variant="danger" onClick={() => handleDeleteBanner(banner._id)} disabled={loading}>
               {loading ? <Spinner animation="border" size="sm" /> : 'Delete'}
             </Button>

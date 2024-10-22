@@ -54,6 +54,7 @@ function IndividualIntervalsExample() {
   return (
     <div className="carousel-container position-relative">
       {/* Banner Image */}
+      
       <img
         src={`http://localhost:5050${bannerImage}`} // Ensure correct path
         alt="Banner"
@@ -90,8 +91,9 @@ function IndividualIntervalsExample() {
           <Form.Group controlId="formMobile" className="mb-3">
             <Form.Label>Mobile Number*</Form.Label>
             <Form.Control
-              type="tel"
+              type="number"
               name="mobile"
+              maxLength={10}
               placeholder="India +91"
               value={formData.mobile}
               onChange={handleChange}

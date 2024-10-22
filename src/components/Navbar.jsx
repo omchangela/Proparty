@@ -32,13 +32,13 @@ function CustomNavbar() {
           <Navbar.Collapse id="basic-navbar-nav">
             {/* Center Section: Navigation Links */}
             <Nav className="ms-auto" activeKey="/home">
-            <Nav.Item>
-            <Nav.Link href="/" className="custom-nav-link">
+              <Nav.Item>
+                <Nav.Link href="/" className="custom-nav-link">
                   Home
                 </Nav.Link>
-            </Nav.Item>
+              </Nav.Item>
               <Nav.Item>
-              
+
                 <Nav.Link href="/projects" className="custom-nav-link">
                   Our Projects
                 </Nav.Link>
@@ -48,19 +48,12 @@ function CustomNavbar() {
               </Nav.Link>
               <Nav.Link href="/about" className="custom-nav-link">
                 About Us
-              </Nav.Link>
-              <Nav.Item>
-                <Dropdown as={Nav.Item} className="custom-dropdown">
-                  <Dropdown.Toggle as={Nav.Link} className="custom-nav-link">
-                    More
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#aboutus">About Us</Dropdown.Item>
-                    <Dropdown.Item href="/cost-estimator">Cost Estimator</Dropdown.Item>
-                    <Dropdown.Item href="/contact">Contact</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Nav.Item>
+              </Nav.Link> 
+              <Nav.Link href="/cost-estimator" className="custom-nav-link">
+                Cost Estimator              </Nav.Link>
+              <Nav.Link href="/contact" className="custom-nav-link">
+                Contact              </Nav.Link>
+
             </Nav>
 
             {/* Right Section: Button and Phone Number */}
@@ -97,7 +90,7 @@ function CustomNavbar() {
               </Nav.Item>
 
               <Nav.Item>
-                <Nav.Link href="tel:+91 9999999999" className="phone-number">
+                <Nav.Link href="tel:+91 9999999999" className="phone-number text-dark">
                   <i className="fas fa-phone-alt phone-icon"></i> {/* Styled phone icon */}
                   &nbsp;+91 9999999999
                 </Nav.Link>

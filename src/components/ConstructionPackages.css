@@ -43,7 +43,7 @@
 
 .packagesbtn {
     width: 100%;
-    background-color: #ff5e13;
+    background-color: #181311;
     color: white;
     border: none;
     padding: 8px;      /* Reduced padding to fit smaller button */
@@ -52,13 +52,13 @@
 }
 
 .packagesbtn:hover {
-    background-color: #f3601c;
+    background-color: #000000;
     color: rgb(255, 255, 255);
 }
 
 /* Style for Explore More Packages button */
 .explore-more {
-    color: #ff5e13;
+    color: #000000;
     text-decoration: underline;
     margin-top: 10px; /* Added margin for better spacing */
 }

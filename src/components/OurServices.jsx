@@ -6,7 +6,7 @@ import bgstyle from '../assets/hero-bg-pattern.png'; // Correct background image
 
 const OurServices = () => {
   return (
-    <div className="our-services-container relative" id='services'>
+    <div className="our-services-container relative mb-5"  id='services'>
       
       <h2>Our Services
       <div className="underline"></div> {/* Stylish underline */}

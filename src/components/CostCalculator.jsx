@@ -49,19 +49,7 @@ const CostCalculator = () => {
 
         <Form onSubmit={handleSubmit}>
           <Row>
-            <Col md={6}>
-              <Form.Group controlId="formMobile" className="mb-3">
-                <Form.Label>Mobile Number*</Form.Label>
-                <Form.Control
-                  type="tel"
-                  name="mobile"
-                  placeholder="India +91"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
-            </Col>
+            
             <Col md={6}>
               <Form.Group controlId="formName" className="mb-3">
                 <Form.Label>Name*</Form.Label>
@@ -70,6 +58,20 @@ const CostCalculator = () => {
                   name="name"
                   placeholder="Enter your name"
                   value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="formMobile" className="mb-3">
+                <Form.Label>Mobile Number*</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="mobile"
+                  maxLength={10}
+                  placeholder="India +91"
+                  value={formData.mobile}
                   onChange={handleChange}
                   required
                 />

@@ -97,4 +97,41 @@
     .card h4 {
       margin-bottom: 10px; /* Space between title and content */
     }
-    
+    /* Add these styles to ConstructionForBusiness.css */
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+  }
+}
+
+.slide-up {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.5s forwards;
+}
+
+@keyframes slideUp {
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.zoom-in {
+  transform: scale(0.9);
+  opacity: 0;
+  animation: zoomIn 0.5s forwards;
+}
+
+@keyframes zoomIn {
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}

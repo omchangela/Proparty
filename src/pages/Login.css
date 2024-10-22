@@ -1,0 +1,13 @@
+/* Login.css */
+.login-container {
+    background-color: #f8f9fa; /* Light background for the entire container */
+  }
+  
+  .text-primary {
+    color: #000000 !important; /* Customize primary text color if needed */
+  }
+  
+  .text-danger {
+    font-weight: bold; /* Bold error message */
+  }
+  

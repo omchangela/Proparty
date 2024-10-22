@@ -6,7 +6,7 @@ import MainImage from './components/MainImage';
 import OurServices from './components/OurServices';
 import ConstructionPackages from './components/ConstructionPackages';
 import ProjectDetails from './components/ProjectDetails';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Updated import
 import About from './components/About';
 import Footer from './components/Footer';
 import ContactUs from './components/ContactUs';
@@ -16,6 +16,12 @@ import CostCalculator from './components/CostCalculator';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import AdminPanel from './pages/AdminPanel';
+import Login from './pages/Login'; // Ensure you import the Login component
+
+// Protected Route Component
+const ProtectedRoute = ({ element, isAuthenticated }) => {
+  return isAuthenticated ? element : <Navigate to="/login" replace />;
+};
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -25,6 +31,9 @@ function App() {
     email: '',
     location: ''
   });
+
+  // Authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Function to handle form input changes
   const handleChange = (e) => {
@@ -62,15 +71,26 @@ function App() {
     });
   };
 
-  // Show the modal after 3 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowModal(true);
-    }, 3000);
+   // Show the modal after 3 seconds only if it hasn't been shown before
+   useEffect(() => {
+    const hasShownModal = localStorage.getItem('hasShownModal');
 
-    // Clean up the timer when the component unmounts
-    return () => clearTimeout(timer);
+    if (!hasShownModal) {
+      const timer = setTimeout(() => {
+        setShowModal(true);
+        localStorage.setItem('hasShownModal', 'true'); // Set the flag in localStorage
+      }, 3000);
+
+      // Clean up the timer when the component unmounts
+      return () => clearTimeout(timer);
+    }
   }, []);
+
+  // Example function to handle login
+  const handleLogin = () => {
+    // Implement your login logic here
+    setIsAuthenticated(true); // Set authenticated state
+  };
 
   return (
     <Router>
@@ -85,7 +105,12 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/businesspart" element={<ConstructionForBusiness />} />
         <Route path="/cost-estimator" element={<CostCalculator />} />
-        <Route path="/admin-panel" element={<AdminPanel />} />
+        
+        {/* Protected Admin Panel Route */}
+        <Route path="/admin-panel" element={<ProtectedRoute element={<AdminPanel />} isAuthenticated={isAuthenticated} />} />
+        
+        {/* Login Route */}
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
       </Routes>
       <Footer />
 

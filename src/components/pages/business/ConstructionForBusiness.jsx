@@ -1,121 +1,86 @@
 import React from 'react';
 import './ConstructionForBusiness.css'; // Optional CSS file for styling
 import BannerImage from '../assets/commercial_banner.webp';
-import Service1Image from '../assets/service1.webp'; // Correct image import
-import Service2Image from '../assets/service2.webp'; // Correct image import
-import Service3Image from '../assets/property1.jpeg'; // Correct image import
-import Service4Image from '../assets/property2.jpg'; // Correct image import
-import Service5Image from '../assets/property3.jpg'; // Correct image import
-import Service6Image from '../assets/property4.jpg'; // Correct image import
-import bgstyle from '../assets/hero-bg-pattern.png'; // Correct background image import
+import Service1Image from '../assets/service1.webp'; 
+import Service2Image from '../assets/service2.webp'; 
+import Service3Image from '../assets/property1.jpeg'; 
+import Service4Image from '../assets/property2.jpg'; 
+import Service5Image from '../assets/property3.jpg'; 
+import Service6Image from '../assets/property4.jpg'; 
+import bgstyle from '../assets/hero-bg-pattern.png'; 
 import BusinessPackages from './BusinessPackages';
-
 
 const ConstructionForBusiness = () => {
   return (
     <div className="construction-for-business-container-fluid">
       {/* Banner Image with Text Overlay */}
-      <div className="banner-image" style={{
+      <div className="banner-image slide-up" style={{
         backgroundImage: `url(${BannerImage})`,
         height: '500px',
         color: 'white',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        position: 'relative', // Set position to relative for text positioning
+        position: 'relative',
       }}>
-        <div className="banner-text z-15">
+        <div className="banner-text z-15 fade-in">
           <h2>Commercial Building Design & Construction Services</h2>
           <p>Looking to build a building? We are your trusted partner for commercial construction projects, from design to completion. We specialize in building commercial buildings, offering expertise in construction </p>
         </div>
       </div>
 
-      <div className="business-service-details " >
-        <h3>Why Choose Us?</h3>
-        <ul className="flex-list"> {/* Add a class for flex styling */}
-          <li>
+      <div className="business-service-details">
+        <h3 className="fade-in">Why Choose Us?</h3>
+        <ul className="flex-list">
+          <li className="fade-in">
             <i className="fas fa-check-circle icon"></i>
             Customized solutions for various business types.
           </li>
-          <li>
+          <li className="fade-in">
             <i className="fas fa-users icon"></i>
             Experienced professionals ensuring quality work.
           </li>
-          <li>
+          <li className="fade-in">
             <i className="fas fa-clock icon"></i>
             On-time delivery with a focus on budget management.
           </li>
-          <li>
+          <li className="fade-in">
             <i className="fas fa-comments icon"></i>
             Transparent communication throughout the project.
           </li>
         </ul>
       </div>
 
-
-
       {/* Our Services Section */}
-      <div className="our-services-container relative" id='services'>
-        <h2> Our PG Building Construction Services
-        </h2>
+      <div className="our-services-container relative slide-up" id='services'>
+        <h2> Our PG Building Construction Services</h2>
         <p>Flawless construction powered by Make My Build</p>
 
-        {/* Background with the correct syntax */}
         <div
           className="relative z-0 flex-wrap gap-2 md:-mt-10 flex-center-center"
           style={{
-            backgroundImage: `url(${bgstyle})`, // Correct syntax for background image
+            backgroundImage: `url(${bgstyle})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "contain",
           }}
         >
-          {/* Added div with normal CSS class */}
           <div className="background-blur"></div>
-
-          {/* Centered Services List */}
           <div className="services-list-container">
             <div className="services-list">
-              <div className="service-item">
-                <a href="/packages" style={{ textDecoration: 'none' }}>
-                  <img src={Service1Image} alt="House Construction" className="service-image" />
-                  <h3>Retail & Commercial Building
-                  </h3>
-                </a>
-              </div>
-              <div className="service-item">
-                <a href="/businesspart" style={{ textDecoration: 'none' }}>
-                  <img src={Service2Image} alt="Construction For Business" className="service-image" />
-                  <h3>PG Building                  </h3>
-                </a>
-              </div>
-              <div className="service-item">
-                <a href="/packages" style={{ textDecoration: 'none' }}>
-                  <img src={Service3Image} alt="House Construction" className="service-image" />
-                  <h3>Hotel Building
-                  </h3>
-                </a>
-              </div>
-              <div className="service-item">
-                <a href="/businesspart" style={{ textDecoration: 'none' }}>
-                  <img src={Service4Image} alt="Construction For Business" className="service-image" />
-                  <h3>Hospital Building
-                  </h3>
-                </a>
-              </div>
-              <div className="service-item">
-                <a href="/packages" style={{ textDecoration: 'none' }}>
-                  <img src={Service5Image} alt="House Construction" className="service-image" />
-                  <h3>School Building
-                  </h3>
-                </a>
-              </div>
-              <div className="service-item">
-                <a href="/businesspart" style={{ textDecoration: 'none' }}>
-                  <img src={Service6Image} alt="Construction For Business" className="service-image" />
-                  <h3>Construction Partners for Developers
-                  </h3>
-                </a>
-              </div>
-              {/* Additional service items */}
+              {[
+                { image: Service1Image, title: 'Retail & Commercial Building', link: '/packages' },
+                { image: Service2Image, title: 'PG Building', link: '/businesspart' },
+                { image: Service3Image, title: 'Hotel Building', link: '/packages' },
+                { image: Service4Image, title: 'Hospital Building', link: '/businesspart' },
+                { image: Service5Image, title: 'School Building', link: '/packages' },
+                { image: Service6Image, title: 'Construction Partners for Developers', link: '/businesspart' },
+              ].map((service, index) => (
+                <div className="service-item zoom-in" key={index}>
+                  <a href={service.link} style={{ textDecoration: 'none' }}>
+                    <img src={service.image} alt={service.title} className="service-image" />
+                    <h3>{service.title}</h3>
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -123,39 +88,21 @@ const ConstructionForBusiness = () => {
 
       {/* New Section: Why Make My Build as Your Commercial Builders */}
       <div className="why-make-my-build-container">
-        <h3 style={{ textAlign: 'center', fontWeight: 'bold', }} className='mb-5'>Why Make My Build as Your Commercial Builders</h3>
+        <h3 style={{ textAlign: 'center', fontWeight: 'bold', }} className='mb-5 fade-in'>Why Make My Build as Your Commercial Builders</h3>
         <div className="cards-container">
-          <div className="card">
-            {/* Quality Assurance Icon */}
-            <h4> <i className="fas fa-check-circle card-icon"></i>  Quality Assurance</h4>
-            <p>We implement stringent quality checks to ensure top-notch construction.</p>
-          </div>
-          <div className="card">
-            {/* Timely Completion Icon */}
-            <h4> <i className="fas fa-clock card-icon"></i> Timely Completion</h4>
-            <p>We respect deadlines and ensure your project is completed on time.</p>
-          </div>
-          <div className="card">
-            {/* Cost-Effective Solutions Icon */}
-            <h4> <i className="fas fa-wallet card-icon"></i> Cost-Effective</h4>
-            <p>Get the best value for your investment without compromising quality.</p>
-          </div>
-          <div className="card">
-            {/* Expert Team Icon */}
-            <h4> <i className="fas fa-users card-icon"></i> Expert Team</h4>
-            <p>Our team consists of experienced professionals in the construction field.</p>
-          </div>
-          <div className="card">
-            {/* Customer-Centric Approach Icon */}
-            <h4><i className="fas fa-thumbs-up card-icon"></i> Zero Delay</h4>
-            <p>We prioritize our clients and tailor solutions to their specific needs.</p>
-          </div>
-          <div className="card">
-            {/* Transparent Communication Icon */}
-            <h4><i className="fas fa-comments card-icon"></i> Transparency
-            </h4>
-            <p>We maintain open lines of communication throughout the project.</p>
-          </div>
+          {[
+            { title: 'Quality Assurance', description: 'We implement stringent quality checks to ensure top-notch construction.', icon: 'fas fa-check-circle' },
+            { title: 'Timely Completion', description: 'We respect deadlines and ensure your project is completed on time.', icon: 'fas fa-clock' },
+            { title: 'Cost-Effective Solutions', description: 'Get the best value for your investment without compromising quality.', icon: 'fas fa-wallet' },
+            { title: 'Expert Team', description: 'Our team consists of experienced professionals in the construction field.', icon: 'fas fa-users' },
+            { title: 'Zero Delay', description: 'We prioritize our clients and tailor solutions to their specific needs.', icon: 'fas fa-thumbs-up' },
+            { title: 'Transparency', description: 'We maintain open lines of communication throughout the project.', icon: 'fas fa-comments' },
+          ].map((card, index) => (
+            <div className="card fade-in" key={index}>
+              <h4> <i className={card.icon + " card-icon"}></i> {card.title}</h4>
+              <p>{card.description}</p>
+            </div>
+          ))}
         </div>
       </div>
       <BusinessPackages />
