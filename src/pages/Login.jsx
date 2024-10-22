@@ -15,7 +15,7 @@ const Login = ({ onLogin }) => {
     setLoading(true); // Set loading to true
 
     // Send login request to the backend
-    fetch('https://property-backend-arqx.onrender.com/api/auth/login', {
+    fetch('http://localhost:5050/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

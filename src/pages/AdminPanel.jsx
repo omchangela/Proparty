@@ -8,7 +8,7 @@ function AdminPanel() {
 
   // Fetch current banner images
   useEffect(() => {
-    fetch('https://property-backend-arqx.onrender.com/api/banners')
+    fetch('http://localhost:5050/api/banners')
       .then(response => response.json())
       .then(data => setBanners(data.banners)) // Store banners in state
       .catch(error => console.error('Error fetching banners:', error));
@@ -30,7 +30,7 @@ function AdminPanel() {
     formData.append('banner', selectedFile);
     setLoading(true);
 
-    fetch('https://property-backend-arqx.onrender.com/api/upload-banner', {
+    fetch('http://localhost:5050/api/upload-banner', {
       method: 'POST',
       body: formData,
     })
@@ -50,7 +50,7 @@ function AdminPanel() {
   // Handle banner deletion
   const handleDeleteBanner = (id) => {
     setLoading(true);
-    fetch(`https://property-backend-arqx.onrender.com/api/banners/${id}`, {
+    fetch(`http://localhost:5050/api/banners/${id}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -89,7 +89,7 @@ function AdminPanel() {
       <div className="banner-list">
         {banners.map(banner => (
           <div key={banner._id} className="banner-item mb-3">
-            <img src={`https://property-backend-arqx.onrender.com${banner.imageUrl}`} alt="Banner" style={{ maxWidth: '100%', height: 'auto' }} />
+            <img src={`http://localhost:5050${banner.imageUrl}`} alt="Banner" style={{ maxWidth: '100%', height: 'auto' }} />
             <Button className="mt-2" variant="danger" onClick={() => handleDeleteBanner(banner._id)} disabled={loading}>
               {loading ? <Spinner animation="border" size="sm" /> : 'Delete'}
             </Button>
