@@ -3,6 +3,11 @@ import { Form, Button, Spinner, Container, Row, Col } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 import './Login.css'; // Import a CSS file for custom styles if needed
 
+// Define backend URL based on the environment
+const backendURL = process.env.NODE_ENV === 'production'
+  ? 'https://your-production-url.com'  // Production URL
+  : 'http://localhost:5050';           // Development URL
+
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,7 +20,7 @@ const Login = ({ onLogin }) => {
     setLoading(true); // Set loading to true
 
     // Send login request to the backend
-    fetch('http://localhost:5050/api/auth/login', {
+    fetch(`${backendURL}/api/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

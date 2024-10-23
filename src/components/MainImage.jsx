@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 import OurServices from './OurServices';
 import OurProjects from './OurProjects';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Carousel } from 'react-bootstrap'; // Import Carousel from Bootstrap
 import ConstructionPackages from './ConstructionPackages';
 
+// Define backend URL based on the environment
+const backendURL = process.env.NODE_ENV === 'production'
+  ? 'https://your-production-url.com'  // Production URL
+  : 'http://localhost:5050';           // Development URL
+
 function IndividualIntervalsExample() {
-  const [bannerImage, setBannerImage] = useState('');
+  const [bannerImages, setBannerImages] = useState([]); // Array for multiple images
 
   // State to handle form data
   const [formData, setFormData] = useState({
@@ -26,7 +31,7 @@ function IndividualIntervalsExample() {
     e.preventDefault();
 
     // Submit form data
-    fetch('http://localhost:5050/api/form-submit', {
+    fetch(`${backendURL}/api/form-submit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,23 +48,27 @@ function IndividualIntervalsExample() {
       });
   };
 
-  // Fetch banner image on component mount
   useEffect(() => {
-    fetch('http://localhost:5050/api/banner-image')
+    fetch(`${backendURL}/api/banner-images`) // Fetch three banner images
       .then(response => response.json())
-      .then(data => setBannerImage(data.imageUrl))
-      .catch(error => console.error('Error fetching banner image:', error));
+      .then(data => setBannerImages(data.imageUrls)) // Save array of image URLs
+      .catch(error => console.error('Error fetching banner images:', error));
   }, []);
-
+  
   return (
     <div className="carousel-container position-relative">
-      {/* Banner Image */}
-      
-      <img
-        src={`http://localhost:5050${bannerImage}`} // Ensure correct path
-        alt="Banner"
-        style={{ height: '500px', width: '100%', objectFit: 'cover', zIndex: 1 }}
-      />
+      {/* Carousel for Banner Images */}
+      <Carousel>
+        {bannerImages.map((image, index) => (
+          <Carousel.Item key={index}>
+            <img
+              src={`${backendURL}${image}`} // Ensure correct path
+              alt={`Banner ${index + 1}`}
+              style={{ height: '500px', width: '100%', objectFit: 'cover', zIndex: 1 }}
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel>
 
       {/* Form Overlay - Positioned on the right side */}
       <div

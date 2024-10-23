@@ -17,6 +17,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import AdminPanel from './pages/AdminPanel';
 import Login from './pages/Login'; // Ensure you import the Login component
+import Register from './pages/Register';
 
 // Protected Route Component
 const ProtectedRoute = ({ element, isAuthenticated }) => {
@@ -105,12 +106,14 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/businesspart" element={<ConstructionForBusiness />} />
         <Route path="/cost-estimator" element={<CostCalculator />} />
+        <Route path="/register" element={<Register />} />
         
         {/* Protected Admin Panel Route */}
         <Route path="/admin-panel" element={<ProtectedRoute element={<AdminPanel />} isAuthenticated={isAuthenticated} />} />
         
         {/* Login Route */}
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        
       </Routes>
       <Footer />
 
