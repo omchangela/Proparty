@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, Spinner, Table } from 'react-bootstrap';
 
 // Define backend URL based on the environment
-const backendURL = process.env.NODE_ENV === 'production'
-  ? 'https://your-production-url.com'  // Production URL
-  : 'http://localhost:5050';           // Development URL
+const backendURL = import.meta.env.BACKEND_URL || 'http://localhost:5020';
 
 function AdminPanel() {
   const [banners, setBanners] = useState([]);

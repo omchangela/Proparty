@@ -90,9 +90,9 @@ function CustomNavbar() {
               </Nav.Item>
 
               <Nav.Item>
-                <Nav.Link href="tel:+91 9999999999" className="phone-number text-dark">
+                <Nav.Link href="tel:+91 8886786687" className="phone-number text-dark">
                   <i className="fas fa-phone-alt phone-icon"></i> {/* Styled phone icon */}
-                  &nbsp;+91 9999999999
+                  &nbsp; +91 8886786687
                 </Nav.Link>
               </Nav.Item>
             </Nav>

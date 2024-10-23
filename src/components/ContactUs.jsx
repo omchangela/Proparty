@@ -4,6 +4,9 @@ import contactimg from '../assets/property5.jpg'; // Your contact image
 
 import { Form, Button } from 'react-bootstrap';
 
+// Define backend URL based on the environment
+const backendURL = import.meta.env.BACKEND_URL || 'http://localhost:5020';
+
 const ContactUs = () => {
   // State to handle form data
   const [formData, setFormData] = useState({
@@ -24,7 +27,7 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:5050/api/form-submit', {
+    fetch(`${backendURL}/api/form-submit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

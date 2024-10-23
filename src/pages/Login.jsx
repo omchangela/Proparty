@@ -4,9 +4,7 @@ import { Navigate } from 'react-router-dom';
 import './Login.css'; // Import a CSS file for custom styles if needed
 
 // Define backend URL based on the environment
-const backendURL = process.env.NODE_ENV === 'production'
-  ? 'https://your-production-url.com'  // Production URL
-  : 'http://localhost:5050';           // Development URL
+const backendURL = import.meta.env.BACKEND_URL || 'http://localhost:5020';
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');

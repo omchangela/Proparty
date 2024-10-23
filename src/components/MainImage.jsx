@@ -5,9 +5,7 @@ import { Form, Button, Carousel } from 'react-bootstrap'; // Import Carousel fro
 import ConstructionPackages from './ConstructionPackages';
 
 // Define backend URL based on the environment
-const backendURL = process.env.NODE_ENV === 'production'
-  ? 'https://your-production-url.com'  // Production URL
-  : 'http://localhost:5050';           // Development URL
+const backendURL = import.meta.env.BACKEND_URL || 'http://localhost:5020';
 
 function IndividualIntervalsExample() {
   const [bannerImages, setBannerImages] = useState([]); // Array for multiple images

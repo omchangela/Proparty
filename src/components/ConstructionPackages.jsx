@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Accordion, Button, Container, Row, Col, Modal, Form } from 'react-bootstrap';
 import './ConstructionPackages.css'; // Optional: Add custom styling for this component
 
-import bgstyle from '../assets/hero-bg-pattern.png'; // Correct background image import
+
+// Define backend URL based on the environment
+const backendURL = import.meta.env.BACKEND_URL || 'http://localhost:5020';
 
 const ConstructionPackages = () => {
   const [showModal, setShowModal] = useState(false); // State to manage modal visibility
@@ -26,7 +28,7 @@ const ConstructionPackages = () => {
     e.preventDefault();
     
     // Send form data to the backend
-    fetch('http://localhost:5050/api/form-submit', {
+    fetch(`${backendURL}/api/form-submit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

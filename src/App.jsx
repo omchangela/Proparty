@@ -23,6 +23,9 @@ import Register from './pages/Register';
 const ProtectedRoute = ({ element, isAuthenticated }) => {
   return isAuthenticated ? element : <Navigate to="/login" replace />;
 };
+// Define backend URL based on the environment
+const backendURL = import.meta.env.BACKEND_URL || 'http://localhost:5020';
+
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -50,7 +53,7 @@ function App() {
     e.preventDefault();
     
     // Send form data to the backend
-    fetch('http://localhost:5050/api/form-submit', {
+    fetch(`${backendURL}/api/form-submit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

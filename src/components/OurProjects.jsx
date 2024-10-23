@@ -5,7 +5,6 @@ import Project1Image from '../assets/property1.jpeg';
 import Project2Image from '../assets/property2.jpg';
 import Project3Image from '../assets/property3.jpg';
 import Project4Image from '../assets/property4.jpg';
-import Project5Image from '../assets/property5.jpg';
 
 const OurProjects = () => {
   const navigate = useNavigate(); 
