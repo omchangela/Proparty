@@ -1,8 +1,14 @@
-# React + Vite
+For production :
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+go to /src/pages/AdminPanel.jsx
 
-Currently, two official plugins are available:
+go to /src/pages/Login.jsx
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+go to /src/pages/Register.jsx
+
+// Define backend URL based on the environment
+const backendURL = process.env.NODE_ENV === 'production'
+  ? 'https://your-production-url.com'  // Production URL
+  : 'http://localhost:5050';           // Development URL
+
+change production url
