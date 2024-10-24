@@ -27,9 +27,6 @@ export default function Footer() {
           <a href='' className='me-4 text-reset'>
             <MDBIcon fab icon='linkedin' />
           </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon='github' />
-          </a>
         </div>
       </section>
 
@@ -65,7 +62,7 @@ export default function Footer() {
                 </a>
               </p>
               <p>
-                <a href='/' className='text-reset'>
+                <a href='/contact' className='text-reset'>
                   Contact Us
                 </a>
               </p>
@@ -74,22 +71,22 @@ export default function Footer() {
             <MDBCol md='3' lg='2' xl='2' className='mx-auto mb-4 mt-5' id='links'>
               <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
               <p>
-                <a href='#!' className='text-reset'>
-                  Pricing
+                <a href='/cost-estimator' className='text-reset'>
+                  cost Estimation
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
-                  Settings
+                <a href='/' className='text-reset'>
+                  projects
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
-                  Orders
+                <a href='/' className='text-reset'>
+                  career
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
+                <a href='/' className='text-reset'>
                   Help
                 </a>
               </p>
@@ -118,8 +115,8 @@ export default function Footer() {
 
       <div className='text-center p-4' style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
         © 2023 Copyright : &nbsp;
-        <a className='text-reset fw-bold' href='/'>
-          Makemybuild.com
+        <a className='text-reset fw-bold' href='/https://www.makemybuild.in'>
+          Makemybuild.in
         </a>
       </div>
     </MDBFooter>

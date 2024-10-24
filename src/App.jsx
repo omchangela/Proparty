@@ -16,9 +16,8 @@ import CostCalculator from './components/CostCalculator';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import AdminPanel from './pages/AdminPanel';
-import Login from './pages/Login'; // Ensure you import the Login component
-import Register from './pages/Register';
-
+import Login from './pages/Login';
+import NotFound from './components/NotFound';
 // Protected Route Component
 const ProtectedRoute = ({ element, isAuthenticated }) => {
   return isAuthenticated ? element : <Navigate to="/login" replace />;
@@ -108,15 +107,15 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/businesspart" element={<ConstructionForBusiness />} />
-        <Route path="/cost-estimator" element={<CostCalculator />} />
-        <Route path="/register" element={<Register />} />
-        
+        <Route path="/cost-estimator" element={<CostCalculator />} /> 
         {/* Protected Admin Panel Route */}
         <Route path="/admin-panel" element={<ProtectedRoute element={<AdminPanel />} isAuthenticated={isAuthenticated} />} />
         
         {/* Login Route */}
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        
+       
+        {/* 404 Not Found Route */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
 

@@ -6,17 +6,31 @@ const backendURL = import.meta.env.VITE_BACKEND_URL || 'https://backend.makemybu
 
 function AdminPanel() {
   const [banners, setBanners] = useState([]);
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [costCalculatorSubmissions, setCostCalculatorSubmissions] = useState([]);
   const [formSubmissions, setFormSubmissions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [bannerImages, setBannerImages] = useState([]); // Array for multiple images
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  // Pagination states
+  const [currentCostPage, setCurrentCostPage] = useState(1);
+  const [costItemsPerPage] = useState(5); // Number of items to show per page
+  const [currentFormPage, setCurrentFormPage] = useState(1);
+  const [formItemsPerPage] = useState(5); // Number of items to show per page
 
   // Fetch current banner images
   useEffect(() => {
-    fetch(`${backendURL}/api/banners`)
+    fetch(`${backendURL}/api/banner-images`)
       .then(response => response.json())
-      .then(data => setBanners(data.banners)) // Store banners in state
-      .catch(error => console.error('Error fetching banners:', error));
+      .then(data => setBanners(data.imageUrls))
+      .catch(error => console.error('Error fetching banner images:', error));
+  }, []);
+
+  // Fetch cost calculator submissions
+  useEffect(() => {
+    fetch(`${backendURL}/api/cost-calculator-submissions`)
+      .then(response => response.json())
+      .then(data => setCostCalculatorSubmissions(data))
+      .catch(error => console.error('Error fetching cost calculator submissions:', error));
   }, []);
 
   // Fetch form submissions
@@ -25,13 +39,6 @@ function AdminPanel() {
       .then(response => response.json())
       .then(data => setFormSubmissions(data))
       .catch(error => console.error('Error fetching form submissions:', error));
-  }, []);
-
-  useEffect(() => {
-    fetch(`${backendURL}/api/banner-images`) // Fetch three banner images
-      .then(response => response.json())
-      .then(data => setBannerImages(data.imageUrls)) // Save array of image URLs
-      .catch(error => console.error('Error fetching banner images:', error));
   }, []);
 
   // Handle banner image upload
@@ -87,6 +94,30 @@ function AdminPanel() {
     }
   };
 
+  // Calculate pagination for cost calculator submissions
+  const indexOfLastCostSubmission = currentCostPage * costItemsPerPage;
+  const indexOfFirstCostSubmission = indexOfLastCostSubmission - costItemsPerPage;
+  const currentCostSubmissions = costCalculatorSubmissions.slice(indexOfFirstCostSubmission, indexOfLastCostSubmission);
+
+  // Calculate pagination for form submissions
+  const indexOfLastFormSubmission = currentFormPage * formItemsPerPage;
+  const indexOfFirstFormSubmission = indexOfLastFormSubmission - formItemsPerPage;
+  const currentFormSubmissions = formSubmissions.slice(indexOfFirstFormSubmission, indexOfLastFormSubmission);
+
+  // Handle page change for cost calculator submissions
+  const totalCostPages = Math.ceil(costCalculatorSubmissions.length / costItemsPerPage);
+  
+  const handleCostPageChange = (direction) => {
+    setCurrentCostPage(prev => Math.min(Math.max(prev + direction, 1), totalCostPages));
+  };
+
+  // Handle page change for form submissions
+  const totalFormPages = Math.ceil(formSubmissions.length / formItemsPerPage);
+  
+  const handleFormPageChange = (direction) => {
+    setCurrentFormPage(prev => Math.min(Math.max(prev + direction, 1), totalFormPages));
+  };
+
   return (
     <div className="container mt-5 bg-light p-4 rounded">
       <h1 className="text-dark text-center mb-4">Admin Panel</h1>
@@ -103,46 +134,82 @@ function AdminPanel() {
         </Button>
       </Form>
 
-      {/* Displaying Banners */}
-      <h2 className="text-dark mt-4">Selected Banners</h2>
-      <div className="banner-list">
-        {banners.map(banner => (
-          <div key={banner._id} className="banner-item mb-3">
-            <img src={`${backendURL}${banner.imageUrl}`} alt="Banner" style={{ maxWidth: '100%', height: '300px' }} />
-          </div>
-        ))}
+{/* Displaying Banners */}
+<h2 className="text-dark mt-4">Latest Banner Images</h2>
+<div className="row banner-list">
+  {banners.map((imageUrl, index) => (
+    <div key={index} className="col-md-4 mb-3">
+      <div className="banner-item text-center"> {/* Center the text */}
+        <img
+          src={`${backendURL}${imageUrl}`}
+          alt={`Banner ${index + 1}`}
+          style={{ maxWidth: '100%', height: '300px', objectFit: 'cover' }} // Make sure images fit nicely
+        />
+        <span className="mt-2">Banner {index + 1}</span> {/* Display the banner number */}
       </div>
+    </div>
+  ))}
+</div>
 
-      <h2 style={{ color: 'black', marginTop: '20vh' }}>Currently Present Banners</h2>
-      <div className="banner-images row">
-        {bannerImages.slice(0, 3).map((image, index) => (
-          <div key={index} className="col-md-4 mb-3">
-            <img
-              src={`${backendURL}${image}`} // Ensure correct path
-              alt={`Banner ${index + 1}`}
-              style={{ height: '300px', width: '100%', objectFit: 'cover', zIndex: 1 }}
-            />
-          </div>
-        ))}
+
+
+      {/* Displaying Cost Calculator Submissions */}
+      <h2 className="text-dark mt-5">Cost Calculator Submissions</h2>
+      <Table striped bordered hover responsive>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Location</th>
+            <th>Area</th>
+            <th>Car Parking</th>
+            <th>Balcony & Utility Area</th>
+            <th>Package</th>
+            <th>City</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentCostSubmissions.map((submission, index) => (
+            <tr key={submission._id}>
+              <td>{indexOfFirstCostSubmission + index + 1}</td>
+              <td>{submission.name}</td>
+              <td>{submission.mobile}</td>
+              <td>{submission.location}</td>
+              <td>{submission.area}</td>
+              <td>{submission.carParking}</td>
+              <td>{submission.balconyUtilityArea}</td>
+              <td>{submission.package}</td>
+              <td>{submission.city}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+
+      {/* Pagination Controls for Cost Calculator Submissions */}
+      <div className="d-flex justify-content-between">
+        <Button onClick={() => handleCostPageChange(-1)} disabled={currentCostPage === 1}>Previous</Button>
+        <Button onClick={() => handleCostPageChange(1)} disabled={currentCostPage === totalCostPages}>Next</Button>
       </div>
+      <p className="text-center mt-2">Page {currentCostPage} of {totalCostPages}</p>
 
       {/* Displaying Form Submissions */}
       <h2 className="text-dark mt-4">Form Submissions</h2>
       <Table striped bordered hover responsive>
         <thead>
           <tr>
-            <th>ID</th> {/* Sequential ID column */}
+            <th>ID</th>
             <th>Name</th>
             <th>Mobile</th>
             <th>Email</th>
             <th>Location</th>
-            <th>Action</th> {/* Action column for delete button */}
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {formSubmissions.map((submission, index) => (
-            <tr key={submission._id}> {/* Using MongoDB ID as key for uniqueness */}
-              <td>{index + 1}</td> {/* Sequential number */}
+          {currentFormSubmissions.map((submission, index) => (
+            <tr key={submission._id}>
+              <td>{indexOfFirstFormSubmission + index + 1}</td>
               <td>{submission.name}</td>
               <td>{submission.mobile}</td>
               <td>{submission.email}</td>
@@ -156,6 +223,13 @@ function AdminPanel() {
           ))}
         </tbody>
       </Table>
+
+      {/* Pagination Controls for Form Submissions */}
+      <div className="d-flex justify-content-between">
+        <Button onClick={() => handleFormPageChange(-1)} disabled={currentFormPage === 1}>Previous</Button>
+        <Button onClick={() => handleFormPageChange(1)} disabled={currentFormPage === totalFormPages}>Next</Button>
+      </div>
+      <p className="text-center mt-2">Page {currentFormPage} of {totalFormPages}</p>
     </div>
   );
 }
