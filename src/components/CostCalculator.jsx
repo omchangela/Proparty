@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import './CostCalculator.css'; // Custom styles if needed
+
+// Define backend URL based on the environment
+const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5020';
 
 const CostCalculator = () => {
   const [formData, setFormData] = useState({
@@ -14,31 +17,78 @@ const CostCalculator = () => {
     city: 'Bengaluru'
   });
 
+  const [errors, setErrors] = useState({}); // State to store validation errors
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+
+    // Reset error for the specific field
+    if (errors[e.target.name]) {
+      setErrors({
+        ...errors,
+        [e.target.name]: null
+      });
+    }
   };
 
-  const handlePackageChange = (selectedPackage) => {
-    setFormData({
-      ...formData,
-      package: selectedPackage
-    });
-  };
+  const validateForm = () => {
+    const newErrors = {};
+    
+    // Validate mobile number
+    if (!/^\d{10}$/.test(formData.mobile)) {
+      newErrors.mobile = 'Mobile number must be exactly 10 digits.';
+    }
+    
+    // Validate other fields (you can add more specific validations if needed)
+    for (const field of ['name', 'location', 'area', 'carParking', 'balconyUtilityArea']) {
+      if (!formData[field]) {
+        newErrors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} is required.`;
+      }
+    }
 
-  const handleCityChange = (selectedCity) => {
-    setFormData({
-      ...formData,
-      city: selectedCity
-    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Returns true if no errors
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform the calculation or pass data to backend
-    console.log('Submitted Data:', formData);
+
+    if (!validateForm()) {
+      return; // Stop submission if validation fails
+    }
+
+    // Send form data to the backend API
+    fetch(`${backendURL}/api/cost-calculator`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Cost calculator form submitted successfully!');
+        setFormData({
+          mobile: '',
+          name: '',
+          location: '',
+          area: '',
+          carParking: '',
+          balconyUtilityArea: '',
+          package: 'Basic Package (Incl. GST)',
+          city: 'Bengaluru'
+        }); // Clear form after submission
+      } else {
+        alert('Failed to submit the form. Please try again later.');
+      }
+    })
+    .catch(error => {
+      console.error('Error submitting form:', error);
+      alert('An error occurred while submitting the form. Please try again later.');
+    });
   };
 
   return (
@@ -49,7 +99,6 @@ const CostCalculator = () => {
 
         <Form onSubmit={handleSubmit}>
           <Row>
-            
             <Col md={6}>
               <Form.Group controlId="formName" className="mb-3">
                 <Form.Label>Name*</Form.Label>
@@ -61,20 +110,22 @@ const CostCalculator = () => {
                   onChange={handleChange}
                   required
                 />
+                {errors.name && <Form.Text className="text-danger">{errors.name}</Form.Text>}
               </Form.Group>
             </Col>
             <Col md={6}>
               <Form.Group controlId="formMobile" className="mb-3">
                 <Form.Label>Mobile Number*</Form.Label>
                 <Form.Control
-                  type="number"
+                  type="number" // Change to text to apply pattern validation
                   name="mobile"
-                  maxLength={10}
                   placeholder="India +91"
                   value={formData.mobile}
                   onChange={handleChange}
                   required
+                  pattern="\d{10}" // Regex pattern to allow only 10 digits
                 />
+                {errors.mobile && <Form.Text className="text-danger">{errors.mobile}</Form.Text>}
               </Form.Group>
             </Col>
           </Row>
@@ -91,6 +142,7 @@ const CostCalculator = () => {
                   onChange={handleChange}
                   required
                 />
+                {errors.location && <Form.Text className="text-danger">{errors.location}</Form.Text>}
               </Form.Group>
             </Col>
             <Col md={6}>
@@ -104,6 +156,7 @@ const CostCalculator = () => {
                   onChange={handleChange}
                   required
                 />
+                {errors.area && <Form.Text className="text-danger">{errors.area}</Form.Text>}
               </Form.Group>
             </Col>
           </Row>
@@ -120,6 +173,7 @@ const CostCalculator = () => {
                   onChange={handleChange}
                   required
                 />
+                {errors.carParking && <Form.Text className="text-danger">{errors.carParking}</Form.Text>}
               </Form.Group>
             </Col>
             <Col md={6}>
@@ -133,6 +187,43 @@ const CostCalculator = () => {
                   onChange={handleChange}
                   required
                 />
+                {errors.balconyUtilityArea && <Form.Text className="text-danger">{errors.balconyUtilityArea}</Form.Text>}
+              </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={6}>
+              <Form.Group controlId="formPackage" className="mb-3">
+                <Form.Label>Package*</Form.Label>
+                <Form.Select
+                  name="package"
+                  value={formData.package}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="Basic Package (Incl. GST)">Basic Package (Incl. GST)</option>
+                  <option value="Premium Package (Incl. GST)">Premium Package (Incl. GST)</option>
+                  <option value="Luxury Package (Incl. GST)">Luxury Package (Incl. GST)</option>
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="formCity" className="mb-3">
+                <Form.Label>City*</Form.Label>
+                <Form.Select
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="Bengaluru">Andhra pradesh</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Kolkata">Kolkata</option>
+                </Form.Select>
               </Form.Group>
             </Col>
           </Row>
@@ -148,7 +239,7 @@ const CostCalculator = () => {
       </Container>
 
       <hr style={{borderTop: '2px dashed'}} />
-      <Container className="container-fluid p-5" id='info-section '>
+      <Container className="container-fluid p-5" id='info-section'>
         <p>
           Are you planning to build your dream home and need to know your home construction cost estimate? Look no further! Make My Build’s House Construction Cost Calculator is here to simplify the process for you. Whether you're a professional contractor or a DIY enthusiast, our construction cost estimator gives you a clear understanding of your construction expenses by providing overall house construction cost per square foot with the breakdown of built-up cost, car parking cost, and balcony & utility cost. It will help you stay within budget and complete your project successfully.
         </p>

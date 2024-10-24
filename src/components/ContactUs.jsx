@@ -4,8 +4,7 @@ import contactimg from '../assets/property5.jpg'; // Your contact image
 
 import { Form, Button } from 'react-bootstrap';
 
-// Define backend URL based on the environment
-const backendURL = import.meta.env.BACKEND_URL || 'http://localhost:5020';
+const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5020';
 
 const ContactUs = () => {
   // State to handle form data
@@ -23,10 +22,9 @@ const ContactUs = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     fetch(`${backendURL}/api/form-submit`, {
       method: 'POST',
       headers: {
@@ -34,15 +32,22 @@ const ContactUs = () => {
       },
       body: JSON.stringify(formData),
     })
-      .then(response => response.text())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text(); // Or response.json() if you expect JSON
+      })
       .then(data => {
         alert('Thank you! We will contact you soon.');
         setFormData({ name: '', mobile: '', email: '', location: '' }); // Clear form after submission
       })
       .catch(error => {
         console.error('Error submitting form:', error);
+        alert('There was a problem submitting your form. Please try again later.'); // User-friendly error message
       });
   };
+  
 
 
   return (

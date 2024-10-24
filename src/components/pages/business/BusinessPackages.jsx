@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Accordion, Button, Container, Row, Col, Modal, Form } from 'react-bootstrap';
 import './BusinessPackages.css'; // Optional: Add custom styling for this component
 
+// Define backend URL based on the environment
+const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5020';
+
 const BusinessPackages = () => {
   const [showModal, setShowModal] = useState(false); // State to manage modal visibility
   const [formData, setFormData] = useState({
@@ -11,6 +14,7 @@ const BusinessPackages = () => {
     location: ''
   });
   const [showAllPackages, setShowAllPackages] = useState(false); // State to manage package visibility
+  const [errors, setErrors] = useState({}); // State to store validation errors
 
   const handleChange = (e) => {
     setFormData({
@@ -19,10 +23,58 @@ const BusinessPackages = () => {
     });
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    
+    // Validate mobile number
+    if (!/^\d{10}$/.test(formData.mobile)) {
+      newErrors.mobile = 'Mobile number must be exactly 10 digits.';
+    }
+
+    // Validate other fields
+    for (const field of ['name', 'email', 'location']) {
+      if (!formData[field]) {
+        newErrors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} is required.`;
+      }
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Returns true if no errors
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Submitted:', formData);
-    setShowModal(false); // Close the modal after submission
+
+    if (!validateForm()) {
+      return; // Stop submission if validation fails
+    }
+
+    // Send form data to the backend API
+    fetch(`${backendURL}/api/form-submit`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Form submitted successfully!');
+        setFormData({
+          name: '',
+          mobile: '',
+          email: '',
+          location: ''
+        }); // Clear form after submission
+        setShowModal(false); // Close the modal
+      } else {
+        alert('Failed to submit the form. Please try again later.');
+      }
+    })
+    .catch(error => {
+      console.error('Error submitting form:', error);
+      alert('An error occurred while submitting the form. Please try again later.');
+    });
   };
 
   const packages = [
@@ -65,8 +117,8 @@ const BusinessPackages = () => {
   ];
 
   return (
-<Container fluid className="business-packages-container-fluid" id='business-packages'>
-<h3 style={{textAlign:'center', fontWeight:'bold'}}>Business Construction Packages</h3>
+    <Container fluid className="business-packages-container-fluid" id='business-packages'>
+      <h3 style={{textAlign:'center', fontWeight:'bold'}}>Business Construction Packages</h3>
       <h5 style={{textAlign:'center'}} className='mb-5'>Select the Best Package according to your requirement</h5>
       <Row className="packages-grid">
         {/* Show all packages on tablet and larger, one on mobile */}
@@ -124,17 +176,20 @@ const BusinessPackages = () => {
                 onChange={handleChange}
                 required
               />
+              {errors.name && <Form.Text className="text-danger">{errors.name}</Form.Text>}
             </Form.Group>
             <Form.Group controlId="formMobile" className="mb-3">
               <Form.Label>Mobile Number*</Form.Label>
               <Form.Control
-                type="tel"
+                type="number" // Change to text to apply pattern validation
                 name="mobile"
                 placeholder="India +91"
                 value={formData.mobile}
                 onChange={handleChange}
                 required
+                pattern="\d{10}" // Regex pattern to allow only 10 digits
               />
+              {errors.mobile && <Form.Text className="text-danger">{errors.mobile}</Form.Text>}
             </Form.Group>
             <Form.Group controlId="formEmail" className="mb-3">
               <Form.Label>Email*</Form.Label>
@@ -146,6 +201,7 @@ const BusinessPackages = () => {
                 onChange={handleChange}
                 required
               />
+              {errors.email && <Form.Text className="text-danger">{errors.email}</Form.Text>}
             </Form.Group>
             <Form.Group controlId="formLocation" className="mb-3">
               <Form.Label>Location of your Plot*</Form.Label>
@@ -157,6 +213,7 @@ const BusinessPackages = () => {
                 onChange={handleChange}
                 required
               />
+              {errors.location && <Form.Text className="text-danger">{errors.location}</Form.Text>}
             </Form.Group>
 
             <p className="discount-text">✔️ Dussehra-BNBDSR24 applied | Upto ₹5 Lakh off</p>

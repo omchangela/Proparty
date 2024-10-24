@@ -4,7 +4,7 @@ import './ConstructionPackages.css'; // Optional: Add custom styling for this co
 
 
 // Define backend URL based on the environment
-const backendURL = import.meta.env.BACKEND_URL || 'http://localhost:5020';
+const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5020';
 
 const ConstructionPackages = () => {
   const [showModal, setShowModal] = useState(false); // State to manage modal visibility
