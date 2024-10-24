@@ -4,7 +4,7 @@ import contactimg from '../assets/property5.jpg'; // Your contact image
 
 import { Form, Button } from 'react-bootstrap';
 
-const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5020';
+const backendURL = import.meta.env.VITE_BACKEND_URL || 'https://backend.makemybuild.in';
 
 const ContactUs = () => {
   // State to handle form data

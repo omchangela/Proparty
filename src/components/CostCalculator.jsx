@@ -3,7 +3,7 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import './CostCalculator.css'; // Custom styles if needed
 
 // Define backend URL based on the environment
-const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5020';
+const backendURL = import.meta.env.VITE_BACKEND_URL || 'https://backend.makemybuild.in';
 
 const CostCalculator = () => {
   const [formData, setFormData] = useState({

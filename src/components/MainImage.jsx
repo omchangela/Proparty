@@ -5,7 +5,7 @@ import { Form, Button, Carousel } from 'react-bootstrap'; // Import Carousel fro
 import ConstructionPackages from './ConstructionPackages';
 
 // Define backend URL based on the environment
-const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5020';
+const backendURL = import.meta.env.VITE_BACKEND_URL || 'https://backend.makemybuild.in';
 
 function IndividualIntervalsExample() {
   const [bannerImages, setBannerImages] = useState([]); // Array for multiple images

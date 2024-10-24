@@ -9,7 +9,7 @@ import Project5Image from '../assets/property5.jpg';
 import bgstyle from '../assets/hero-bg-pattern.png'; 
 
 // Define backend URL based on the environment
-const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5020';
+const backendURL = import.meta.env.VITE_BACKEND_URL || 'https://backend.makemybuild.in';
 
 const ProjectPage = () => {
   const navigate = useNavigate(); 

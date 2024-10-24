@@ -24,7 +24,7 @@ const ProtectedRoute = ({ element, isAuthenticated }) => {
   return isAuthenticated ? element : <Navigate to="/login" replace />;
 };
 
-const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5020';
+const backendURL = import.meta.env.VITE_BACKEND_URL || 'https://backend.makemybuild.in';
 
 
 function App() {

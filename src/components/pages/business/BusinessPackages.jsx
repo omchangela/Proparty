@@ -3,7 +3,7 @@ import { Accordion, Button, Container, Row, Col, Modal, Form } from 'react-boots
 import './BusinessPackages.css'; // Optional: Add custom styling for this component
 
 // Define backend URL based on the environment
-const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5020';
+const backendURL = import.meta.env.VITE_BACKEND_URL || 'https://backend.makemybuild.in';
 
 const BusinessPackages = () => {
   const [showModal, setShowModal] = useState(false); // State to manage modal visibility
